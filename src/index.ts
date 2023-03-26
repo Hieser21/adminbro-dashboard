@@ -5,7 +5,9 @@ import mongoose from 'mongoose'
 import AdminBroExpress from '@admin-bro/express'
 import adminBroOptions from './adminbro-options'
 
+
 require('dotenv').config()
+
 
 const router = AdminBroExpress.buildAuthenticatedRouter(adminBroOptions, {
   authenticate: async (email: any, password: any) => {
@@ -22,15 +24,19 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBroOptions, {
 })
 
 const app = express()
-
 app.use(adminBroOptions.options.rootPath, router)
+app.use(express.static('../public'))
 
+app.get('/', (req, res) => {res.redirect('/admin')})
+app.post('/support', (req, res) => {res.json(req.body).redirect('/admin/pages/Settings')})
 const run = async () => {
-  await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ghmix.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
+  await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ehnrp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
+  }).then(function(){
+    console.log('DB connected')
   })
 
   await app.listen(8080)

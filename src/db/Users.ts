@@ -11,8 +11,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  role: { type: String, enum: ['admin', 'restricted'], required: true }
-}, {
+  role: { type: String, enum: ['admin','general'], required: true },
+  isBanned: {type: Boolean, required: true}
+},
+
+{
   timestamps: true
 })
 
