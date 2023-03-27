@@ -12,12 +12,12 @@ const UserSchema = new mongoose.Schema({
     lowercase: true
   },
   subscription: {
-    required: true,
+    required: false,
     type: String,
     enum: ['lite','pro']
   },
   isActive: {
-    required: true,
+    required: false,
     type: String,
     enum: ['Active', 'Offline']
   },

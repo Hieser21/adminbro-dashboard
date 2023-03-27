@@ -38,9 +38,8 @@ const Dashboard = () => {
 
   return (
     <Box variant="grey">
-    <Card variant="white">
-      <div className="row">
-        <div className='column'>
+    <Card variant="white" className="angry-grid">
+        <div id="item-0">
         <div className="card">
         <div className="card-details">
           <p className="text-title">Username</p>
@@ -48,7 +47,7 @@ const Dashboard = () => {
         </div>
       </div>
       </div>
-      <div className="column">
+      <div id="item-1">
       <div className="card">
         <div className="card-details">
           <p className="text-title">Subscription</p>
@@ -56,7 +55,7 @@ const Dashboard = () => {
         </div>
       </div>
       </div>
-      <div className="column">
+      <div id="item-2">
       <div className="card">
         <div className="card-details">
           <p className="text-title">Status</p>
@@ -64,29 +63,31 @@ const Dashboard = () => {
         </div>
       </div>
       </div>
-      </div>
-
-      <div class="angry-grid">
-          <div id="item-0">
+          <div id="item-3">
+            <div className='card'>
             <div className="card-details">
           <p className="text-title">Announcements</p>
           <div className="text-body">{ping?.length? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div>
           </div>
           </div>
-          <div id="item-1">
+          </div>
+          <div id="item-4">
+<div className='card'>
           <div className="card-details">
           <p className="text-title">Anti Exploit</p>
-          <Placeholder style={{width: 400, height: 14}}/>
+         <p className='text-body'>Placeholder text</p>
           {/* <div className="text-body">{ping?.length? <pre><p>{ping[0].announcement} at {ping[0].createdAt}</p><p>{ping[1].announcement} at {ping[1].createdAt}</p><p>{ping[2].announcement} at {ping[2].createdAt}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div> */}
           </div>
           </div>
-          <div id="item-2">
+          </div>
+          <div id="item-5">
+            <div className='card'>
           <div className="card-details">
           <p className="text-title">Daily</p>
           <div className="text-body">{logs?.length? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div>
           </div>
           </div>
-        </div>
+          </div>
     </Card>
     <Box variant='card'>
     <footer>

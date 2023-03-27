@@ -18,50 +18,52 @@ const canEditReports = ({currentAdmin}: any) => currentAdmin && currentAdmin.rol
 
 const adminBroOptions = new AdminBro({
   resources: [
-  //   {
-  //     resource: Users,
-  //     options: {
-  //       navigation: contentNavigation,
-  //       properties: {
-  //         email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
-  //         encryptedPassword: { isVisible: false, type: 'password' },
-  //         password: {
-  //           type: 'password',
-  //           isVisible: {
-  //             list: false, edit: true, filter: false, show: false
-  //           }
-  //         },
-  //         updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
-  //         createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
-  //       },
-  //       actions: {
-  //         new: {
-  //           before: async (request) => {
-  //             if(request.payload.password) {
-  //               request.payload = {
-  //                 ...request.payload,
-  //                 encryptedPassword: await bcrypt.hash(request.payload.password, 10),
-  //                 password: undefined,
-  //               }
-  //             }
-  //             return request
-  //           },
-  //         },
-  //         edit: {
-  //           before: async (request: any) => {
-  //             if (request.payload.password) {
-  //               request.payload = {
-  //                 ...request.payload,
-  //                 encryptedPassword: await bcrypt.hash(request.payload.password, 10)
-  //               }
-  //             }
-  //             return request
-  //           },
-  //         },
-  //         delete: { isAccessible: canModifyUsers }
-  //       }
-  //     }
-  //   },
+    {
+      resource: Users,
+      options: {
+        navigation: contentNavigation,
+        properties: {
+          email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
+          encryptedPassword: { isVisible: false, type: 'password' },
+          password: {
+            type: 'password',
+            isVisible: {
+              list: false, edit: true, filter: false, show: false
+            }
+          },
+          updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
+          createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
+        },
+        actions: {
+          new: {
+            before: async (request) => {
+              if(request.payload.password) {
+                request.payload = {
+                  ...request.payload,
+                  encryptedPassword: await bcrypt.hash(request.payload.password, 10),
+                  password: undefined,
+                }
+              }
+              return request
+            },
+            isAccessible: canModifyUsers
+          },
+          edit: {
+            before: async (request: any) => {
+              if (request.payload.password) {
+                request.payload = {
+                  ...request.payload,
+                  encryptedPassword: await bcrypt.hash(request.payload.password, 10)
+                }
+              }
+              return request
+            },
+            isAccessible: canModifyUsers
+          },
+          delete: { isAccessible: canModifyUsers }
+        }
+      }
+    },
   {
     resource: Reports,
     options: {
