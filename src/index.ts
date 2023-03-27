@@ -2,15 +2,15 @@ import express from 'express'
 import bcrypt from 'bcrypt'
 import Users from './db/Users'
 import mongoose from 'mongoose'
-import AdminBroExpress from '@admin-bro/express'
+import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import AdminBro from 'admin-bro/types/src'
+import AdminBro from 'adminjs/types/src'
 
 
 require('dotenv').config()
 
-
-const router = AdminBroExpress.buildAuthenticatedRouter(adminBroOptions, {
+const cookie = process.env.COOKIE_PASSWORD
+const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   authenticate: async (email: any, password: any) => {
     const user = await Users.findOne({ email })
     if (user) {
@@ -21,7 +21,7 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBroOptions, {
     }
     return false
   },
-  cookiePassword: process.env.COOKIE_PASSWORD
+  cookiePassword: `${cookie}`
 })
 
 const app = express()

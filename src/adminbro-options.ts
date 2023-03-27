@@ -1,12 +1,17 @@
-import AdminBro from 'admin-bro'
-import AdminBroMongoose, { Resource } from '@admin-bro/mongoose'
+import AdminJS, { Dashboard } from 'adminjs'
+import {ComponentLoader} from 'adminjs'
+import AdminJSMongoose, { Resource } from '@adminjs/mongoose'
 import bcrypt from 'bcrypt'
 import Users from './db/Users'
 import Reports from './db/Reports'
 import Announce from './db/Announce'
-import {CurrentAdmin} from 'admin-bro'
+import {CurrentAdmin} from 'adminjs'
 
-AdminBro.registerAdapter(AdminBroMongoose)
+const componentLoader = new ComponentLoader()
+const Component = {
+  Dashboard: AdminJS.bundle('./components/my-dashboard-component')
+};
+AdminJS.registerAdapter(AdminJSMongoose)
 const contentNavigation = {
   name: 'Components',
   icon: 'Dashboard'
@@ -16,7 +21,7 @@ const canEditReports = ({currentAdmin}: any) => currentAdmin && currentAdmin.rol
 
 
 
-const adminBroOptions = new AdminBro({
+const adminBroOptions = new AdminJS({
   resources: [
     {
       resource: Users,
@@ -147,15 +152,15 @@ const adminBroOptions = new AdminBro({
         subscription_type: subscription_type
       };
     },
-    component: AdminBro.bundle('./components/my-dashboard-component')
+    component: Component.Dashboard
   },
   pages: {
     'Dashboard': {
-      component: AdminBro.bundle('./components/my-dashboard-component'),
+      component: AdminJS.bundle('./components/my-dashboard-component'),
       icon: 'Dashboard'
     },
     "Settings": {
-      component: AdminBro.bundle('./components/settings'),
+      component: componentLoader.add('Settings','./components/settings'),
       icon: 'Settings',
       handler: async function(request, response){
         return {
@@ -170,7 +175,7 @@ const adminBroOptions = new AdminBro({
     companyName: 'Aspect | Instep',
     theme: { colors: {
     } },
-    softwareBrothers: false,
+    withMadeWithLove: false,
     logo:  "https://media.discordapp.net/attachments/1041025455144308816/1089434600872361984/Logo_mark_variant_4.png?width=114&height=115",
     favicon: "https://cdn.discordapp.com/attachments/926498420011708427/1089225269887389726/Logo_mark_variant_4.ico"
     

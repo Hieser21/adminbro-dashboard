@@ -1,7 +1,7 @@
-import { Box, Placeholder, H3, Button, Badge } from '@admin-bro/design-system'
+import { Box, Placeholder, H3, Button, Badge } from '@adminjs/design-system'
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import { ApiClient, NoticeMessage, useNotice } from 'admin-bro';
+import { ApiClient, NoticeMessage, useNotice } from 'adminjs';
 import {useCurrentAdmin} from 'admin-bro'
 const api = new ApiClient();
 
