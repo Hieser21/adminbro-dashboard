@@ -8,14 +8,15 @@ user: {
 },
 type: {
     type: 'string',
-    enum: ['bug', 'rulebreak'],
+    enum: ['bug', 'exception'],
     required: true,
 },
 description: {
     type: 'string',
     required: true,
-}
-})
+},
+}, { timestamps:true}
+)
 
 const Reports = mongoose.model('Reports', reportSchema)
 

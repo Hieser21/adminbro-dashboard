@@ -4,6 +4,7 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminBroExpress from '@admin-bro/express'
 import adminBroOptions from './adminbro-options'
+import AdminBro from 'admin-bro/types/src'
 
 
 require('dotenv').config()
@@ -25,7 +26,8 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBroOptions, {
 
 const app = express()
 app.use(adminBroOptions.options.rootPath, router)
-app.use(express.static('../public'))
+app.use("/asset",express.static("public"))
+
 
 app.get('/', (req, res) => {res.redirect('/admin')})
 app.post('/support', (req, res) => {res.json(req.body).redirect('/admin/pages/Settings')})
