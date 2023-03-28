@@ -15,6 +15,11 @@ description: {
     type: 'string',
     required: true,
 },
+game: {
+    required: true,
+    type: String,
+    
+}
 }, { timestamps:true}
 )
 

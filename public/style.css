@@ -142,12 +142,12 @@
 }
 #item-5 {
   grid-row-start: 1;
-  grid-column-start: 4;
+  grid-column-start: 5;
 
   grid-row-end: 3;
   grid-column-end: 5;
   align-items: center;
-  height: 40%;
+  height: 148%;
   
 }
 #item-6 {
@@ -157,4 +157,8 @@
 
   grid-row-end: 4;
   grid-column-end: 5;
+}
+
+.daily {
+  height:100%
 }

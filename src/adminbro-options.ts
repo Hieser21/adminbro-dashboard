@@ -9,7 +9,8 @@ import {CurrentAdmin} from 'adminjs'
 
 const componentLoader = new ComponentLoader()
 const Component = {
-  Dashboard: AdminJS.bundle('./components/my-dashboard-component')
+  Dashboard: AdminJS.bundle('./components/my-dashboard-component'),
+ TopBar: AdminJS.bundle('./components/navbar', 'TopBar')
 };
 AdminJS.registerAdapter(AdminJSMongoose)
 const contentNavigation = {
@@ -40,6 +41,19 @@ const adminBroOptions = new AdminJS({
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
         },
         actions: {
+          list: {
+            before: (request, context) => {
+              const { query = {} } = request
+              const newQuery = {
+                ...query,
+                ['filters.game']: context.currentAdmin.game,
+              }
+              
+              request.query = newQuery
+              
+              return request
+            }
+          },
           new: {
             before: async (request) => {
               if(request.payload.password) {
@@ -51,7 +65,7 @@ const adminBroOptions = new AdminJS({
               }
               return request
             },
-            isAccessible: canModifyUsers
+            isAccessible: canModifyUsers,
           },
           edit: {
             before: async (request: any) => {
@@ -74,29 +88,24 @@ const adminBroOptions = new AdminJS({
     options: {
       navigation: contentNavigation,
       actions: {
+            list: {
+              before: (request, context) => {
+                const { query = {} } = request
+                const newQuery = {
+                  ...query,
+                  ['filters.game']: context.currentAdmin.game,
+                }
+                
+                request.query = newQuery
+                
+                return request
+              }
+          },
                 new: {
-                  before: async (request) => {
-                    if(request.payload.password) {
-                      request.payload = {
-                        ...request.payload,
-                        encryptedPassword: await bcrypt.hash(request.payload.password, 10),
-                        password: undefined,
-                      }
-                    }
-                    return request
-                  },
+                  
                   isAccessible: canEditReports
                 },
                 edit: {
-                  before: async (request: any) => {
-                    if (request.payload.password) {
-                      request.payload = {
-                        ...request.payload,
-                        encryptedPassword: await bcrypt.hash(request.payload.password, 10)
-                      }
-                    }
-                    return request
-                  },
                   isAccessible: canEditReports
                 
                 },
@@ -160,7 +169,7 @@ const adminBroOptions = new AdminJS({
       icon: 'Dashboard'
     },
     "Settings": {
-      component: componentLoader.add('Settings','./components/settings'),
+      component: AdminJS.bundle('./components/settings'),
       icon: 'Settings',
       handler: async function(request, response){
         return {

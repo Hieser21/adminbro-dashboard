@@ -4,7 +4,7 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import AdminBro from 'adminjs/types/src'
+import AdminJS from 'adminjs/types/src'
 
 
 require('dotenv').config()
@@ -30,7 +30,6 @@ app.use("/asset",express.static("public"))
 
 
 app.get('/', (req, res) => {res.redirect('/admin')})
-app.post('/support', (req, res) => {res.json(req.body).redirect('/admin/pages/Settings')})
 const run = async () => {
   await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ehnrp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
