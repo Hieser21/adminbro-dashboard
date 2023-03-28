@@ -5,9 +5,27 @@ import bcrypt from 'bcrypt'
 import Users from './db/Users'
 import Reports from './db/Reports'
 import Announce from './db/Announce'
-import {CurrentAdmin} from 'adminjs'
+import {} from 'adminjs'
 
 const componentLoader = new ComponentLoader()
+const beforeAction = (request, context) => {
+  if (context.currentAdmin.role !== 'admin'){
+  const { query = {} } = request
+  
+  const newQuery = {
+    ...query,
+    ['filters.game']: context.currentAdmin.game,
+  }
+  
+  request.query = newQuery
+  
+  return request
+  } 
+  else {
+    return request
+  }
+}
+
 const Component = {
   Dashboard: AdminJS.bundle('./components/my-dashboard-component'),
  TopBar: AdminJS.bundle('./components/navbar', 'TopBar')
@@ -31,6 +49,9 @@ const adminBroOptions = new AdminJS({
         properties: {
           email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
           encryptedPassword: { isVisible: false, type: 'password' },
+          type: {
+            isVisible: {list: false, filter: false, show: false}
+          },
           password: {
             type: 'password',
             isVisible: {
@@ -42,17 +63,7 @@ const adminBroOptions = new AdminJS({
         },
         actions: {
           list: {
-            before: (request, context) => {
-              const { query = {} } = request
-              const newQuery = {
-                ...query,
-                ['filters.game']: context.currentAdmin.game,
-              }
-              
-              request.query = newQuery
-              
-              return request
-            }
+            before: beforeAction
           },
           new: {
             before: async (request) => {
@@ -89,17 +100,7 @@ const adminBroOptions = new AdminJS({
       navigation: contentNavigation,
       actions: {
             list: {
-              before: (request, context) => {
-                const { query = {} } = request
-                const newQuery = {
-                  ...query,
-                  ['filters.game']: context.currentAdmin.game,
-                }
-                
-                request.query = newQuery
-                
-                return request
-              }
+              before: beforeAction
           },
                 new: {
                   
@@ -193,5 +194,4 @@ const adminBroOptions = new AdminJS({
     styles: ['/asset/style.css']
   }
 })
-
 export default adminBroOptions

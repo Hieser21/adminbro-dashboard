@@ -1,7 +1,9 @@
 import { CurrentUserNav, Box } from '@adminjs/design-system'
 import {useCurrentAdmin} from 'adminjs'
+let currentAdminUser;
 const TopBar = () => {
   const [currentAdmin, setCurrentAdmin] = useCurrentAdmin()
+  currentAdminUser = currentAdmin
    return(
     <Box
       border="default"
@@ -32,5 +34,5 @@ const TopBar = () => {
     </Box>
     )
 }
-
+export {currentAdminUser} 
 export default TopBar

@@ -27,7 +27,6 @@ const UserSchema = new mongoose.Schema({
   },
   game: { type: String},
   role: { type: String, enum: ['Admin','General'], required: true },
-  isBanned: {type: Boolean, required: true}
 },
 
 {
