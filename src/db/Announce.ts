@@ -5,7 +5,7 @@ const annouceSchema = new mongoose.Schema({
         required: true,
         type: 'string',
     },
-}, {timestamps: true})
+}, { timestamps: true })
 
 const Announce = mongoose.model('Announce', annouceSchema)
 

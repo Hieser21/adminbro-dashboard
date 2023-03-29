@@ -1,15 +1,27 @@
-import { CurrentUserNav, Box } from '@adminjs/design-system'
-import {useCurrentAdmin} from 'adminjs'
+import { CurrentUserNav, Box} from '@adminjs/design-system'
+import { useCurrentAdmin } from 'adminjs'
+import {useSelector} from 'react-redux'
+import styled from 'styled-components'
 let currentAdminUser;
-const TopBar = () => {
+let toggler;
+const TopBar = (props) => {
   const [currentAdmin, setCurrentAdmin] = useCurrentAdmin()
+  const { toggleSidebar } = props
+  toggler = toggleSidebar
+  const [session, paths, versions] = useSelector(
+    (state) => [
+      state.session,
+      state.paths,
+      state.versions,
+    ],
+  )
   currentAdminUser = currentAdmin
-   return(
+  return (
     <Box
-      border="default"
-      flex
-      flexDirection="row-reverse"
-      height="navbarHeight"
+    border='default'
+    flex
+    flexDirection='row-reverse'
+    height='navbarHeight'
     >
       <CurrentUserNav
         dropActions={[
@@ -17,22 +29,28 @@ const TopBar = () => {
             icon: 'Logout',
             label: 'Log out',
             href: '/admin/logout',
-            onClick: function noRefCheck(){}
+            onClick: function noRefCheck() { }
           }
         ]}
         lineActions={[
           {
+            icon: 'Continue',
+            label: 'Sidebar',
+            onClick: toggleSidebar,
+            
+          },
+          {
             icon: 'Help',
             label: 'Help',
             href: 'https://discord.gg/FrxXABtE',
-            onClick: function noRefCheck(){}
+            onClick: function noRefCheck() { }
           },
         ]}
         name={currentAdmin.name}
         title={currentAdmin.title}
       />
     </Box>
-    )
+  )
 }
-export {currentAdminUser} 
+export { currentAdminUser, toggler }
 export default TopBar

@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   subscription: {
     required: false,
     type: String,
-    enum: ['lite','pro']
+    enum: ['lite', 'pro']
   },
   isActive: {
     required: false,
@@ -25,13 +25,16 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  game: { type: String},
-  role: { type: String, enum: ['Admin','General'], required: true },
+  robloxID: {
+    type: String
+  },
+  game: { type: String },
+  role: { type: String, enum: ['Admin', 'General'], required: true },
 },
 
-{
-  timestamps: true
-})
+  {
+    timestamps: true
+  })
 
 const Users = mongoose.model('Users', UserSchema)
 
