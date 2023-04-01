@@ -4,13 +4,11 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import * as session from 'express-session'
-import { default as MongoStorePkg } from 'connect-mongo'
-import AdminJS from 'adminjs/types/src'
+import { default as MongoStore} from 'connect-mongo'
 
 require('dotenv').config()
-const sessionStore = MongoStorePkg.create({
-  mongoUrl: 'mongodb+srv://Bot:rattlesnake20@cluster0.ehnrp.mongodb.net/?retryWrites=true&w=majority',
+const sessionStore = MongoStore.create({
+  mongoUrl: process.env.MONGO_URI,
   ttl: 14 * 24 * 60 * 60,
   autoRemove: 'native'
 })

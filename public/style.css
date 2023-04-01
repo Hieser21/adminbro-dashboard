@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 .card {
   border-radius: 20px;
-  background: #f5f5f5;
+  background: #F7F7F7;
+  color: #0d1318;
   position: relative;
   padding: 16px;
   text-align: center;
   border: 2px solid #c3c6ce;
-  transition: 0.5s ease-out;
   overflow: visible;
 }
 
@@ -232,10 +232,13 @@
 }
 
 :root {
-  --topbar-color: #6844CE;
-  --sidebar-bg-color: white;
-  --sidebar-color: #6844CE;
+  --topbar-color: #F7F7F7;
+  --sidebar-bg-color: #F7F7F7;
+  --sidebar-color: #6844ce;
   --sidebar-link-color:rgb(15, 13, 13);
+}
+.topbar {
+  background-color: var(--topbar-color) !important;
 }
 
 section[data-css="sidebar"] {
@@ -266,8 +269,8 @@ section[data-css="sidebar-resources"] {
   color: var(--sidebar-link-color);
 }
 
-@media (min-width: 900px) {
-  a[title="sidebar"] span{
+@media (min-width: 1326px) {
+  a[title="Sidebar"] span{
     display:none !important;
   }
 

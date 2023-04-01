@@ -97,11 +97,11 @@ const Dashboard = () => {
             </div>
           </div>
         </Card>
-        
+
 
       </Box>
       <footer className='footer-content'>
-          <div>Aspect Systems | All rights reserved.</div></footer>
+        <div>Aspect Systems | All rights reserved.</div></footer>
     </div>
   )
 }

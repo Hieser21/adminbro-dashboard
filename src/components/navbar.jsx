@@ -18,10 +18,11 @@ const TopBar = (props) => {
   currentAdminUser = currentAdmin
   return (
     <Box
-    border='default'
+    border='0px'
     flex
     flexDirection='row-reverse'
     height='navbarHeight'
+    className='topbar'
     >
       <CurrentUserNav
         dropActions={[

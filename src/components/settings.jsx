@@ -10,7 +10,7 @@ const SomeStats = () => {
   const [email, setEmail] = useState('')
   const addNotice = useNotice();
   const handleClick = () => {
-   api.resourceAction()
+ 
   }
 
   const handleRoblox = (event) => {

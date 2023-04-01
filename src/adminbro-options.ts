@@ -1,13 +1,12 @@
 import AdminJS, { Dashboard } from 'adminjs'
 import { ComponentLoader } from 'adminjs'
-import {Theme} from '@adminjs/design-system'
+import { Theme } from '@adminjs/design-system'
 import AdminJSMongoose, { Resource } from '@adminjs/mongoose'
 import bcrypt from 'bcrypt'
 import Users from './db/Users'
 import Reports from './db/Reports'
 import Announce from './db/Announce'
 const componentLoader = new ComponentLoader()
-
 const beforeAction = (request, context) => {
   if (context.currentAdmin.role !== 'Admin') {
     const { query = {} } = request
@@ -46,7 +45,7 @@ const adminBroOptions = new AdminJS({
       options: {
         navigation: contentNavigation,
         properties: {
-          _id: {isVisible: false},
+          _id: { isVisible: false },
           email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
           encryptedPassword: { isVisible: false, type: 'password' },
           type: {
@@ -100,7 +99,7 @@ const adminBroOptions = new AdminJS({
         navigation: contentNavigation,
         properties: {
           updatedAt: {
-            isVisible: {list: false, show: false, edit: false}
+            isVisible: { list: false, show: false, edit: false }
           }
         },
         actions: {
@@ -128,7 +127,7 @@ const adminBroOptions = new AdminJS({
             isVisible: { list: false, edit: false, show: true, filter: false }
           },
           updatedAt: {
-            isVisible: {list: false, show: false, edit: false}
+            isVisible: { list: false, show: false, edit: false }
           }
         },
         actions: {
@@ -145,13 +144,17 @@ const adminBroOptions = new AdminJS({
   locale: {
     language: 'en',
     translations: {
+      properties: {
+        password: 'Pass'
+      },
       messages: {
         loginWelcome: 'Providing Innovative Security'
       },
       labels: {
-        loginWelcome: 'Aspect',
+        loginWelcome: 'Aspect Systems',
         Users: 'Users',
-        Announce: 'Announcements'
+        Announce: 'Announcements',
+        Email: 'Email'
       }
     }
   },
@@ -178,12 +181,18 @@ const adminBroOptions = new AdminJS({
       component: AdminJS.bundle('./components/my-dashboard-component'),
       icon: 'Dashboard'
     },
-   
+
   },
 
   rootPath: '/admin',
   branding: {
     companyName: 'Aspect | Instep',
+    theme: {
+      colors: {
+        primary100: '#6844CE',
+        hoverBg: '#cec2ef'
+      }
+    },
     withMadeWithLove: false,
     logo: "https://media.discordapp.net/attachments/1041025455144308816/1089434600872361984/Logo_mark_variant_4.png?width=114&height=115",
     favicon: "https://cdn.discordapp.com/attachments/926498420011708427/1089225269887389726/Logo_mark_variant_4.ico"
@@ -193,4 +202,5 @@ const adminBroOptions = new AdminJS({
     styles: ['/asset/style.css']
   }
 })
+
 export default adminBroOptions
