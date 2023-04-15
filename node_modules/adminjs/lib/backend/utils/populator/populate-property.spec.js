@@ -1,11 +1,17 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _sinon = _interopRequireDefault(require("sinon"));
+
 var _adapters = require("../../adapters");
+
 var _decorators = require("../../decorators");
+
 var _populateProperty = require("./populate-property");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('populateProperty', () => {
   const userId = '1234';
   const path = 'userId';
@@ -46,6 +52,7 @@ describe('populateProperty', () => {
     });
     it('returns 2 records', async () => {
       var _populatedResponse;
+
       (0, _chai.expect)((_populatedResponse = populatedResponse) === null || _populatedResponse === void 0 ? void 0 : _populatedResponse.length).to.eq(2);
     });
     it('calls findMany in with the list of userIds just once', () => {
@@ -59,8 +66,8 @@ describe('populateProperty', () => {
   context('record with array property being also a reference', () => {
     const [userId1, userId2] = ['user1', 'user2'];
     beforeEach(async () => {
-      record.get.returns([userId1, userId2]);
-      // resourceDecorator
+      record.get.returns([userId1, userId2]); // resourceDecorator
+
       userRecord.id.returns(userId);
       property.isArray.returns(true);
       referenceResource.findMany.resolves([userRecord]);

@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 /**
  * Indicates if route action should be updated, meaning whether it should fetch
  * new data from the backend.
@@ -26,5 +27,6 @@ const shouldActionReFetchData = (currentMatchParams, newMatchParams) => {
   } = newMatchParams;
   return resourceId !== newResourceId || recordId !== newRecordId || actionName !== newActionName;
 };
+
 var _default = shouldActionReFetchData;
 exports.default = _default;

@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _convertNestedParam = require("./convert-nested-param");
+
 const jsonField = {
   number: '123',
   date: '2020-11-08',

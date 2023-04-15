@@ -1,9 +1,13 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _removeSubProperty = require("./remove-sub-property");
+
 var _factory = _interopRequireDefault(require("../../spec/factory"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('removeSubProperty', () => {
   let record;
   let populated1;

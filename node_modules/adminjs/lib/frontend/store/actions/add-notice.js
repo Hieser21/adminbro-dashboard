@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.addNotice = exports.ADD_NOTICE = void 0;
 const ADD_NOTICE = 'ADD_NOTICE';
 exports.ADD_NOTICE = ADD_NOTICE;
+
 const addNotice = (data = {
   message: ''
 }) => ({
@@ -17,4 +18,5 @@ const addNotice = (data = {
     progress: 0
   }
 });
+
 exports.addNotice = addNotice;

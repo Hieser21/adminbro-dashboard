@@ -4,10 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.ErrorBoundary = void 0;
+
 var _react = _interopRequireDefault(require("react"));
+
 var _designSystem = require("@adminjs/design-system");
+
 var _hooks = require("../../hooks");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const ErrorMessage = ({
   error
 }) => {
@@ -22,6 +27,7 @@ const ErrorMessage = ({
     mt: "default"
   }, translateMessage('seeConsoleForMore')));
 };
+
 class ErrorBoundary extends _react.default.Component {
   constructor(props) {
     super(props);
@@ -29,11 +35,13 @@ class ErrorBoundary extends _react.default.Component {
       error: null
     };
   }
+
   componentDidCatch(error) {
     this.setState({
       error
     });
   }
+
   render() {
     const {
       children
@@ -41,14 +49,18 @@ class ErrorBoundary extends _react.default.Component {
     const {
       error
     } = this.state;
+
     if (error !== null) {
       return /*#__PURE__*/_react.default.createElement(ErrorMessage, {
         error: error
       });
     }
+
     return children || null;
   }
+
 }
+
 exports.ErrorBoundary = ErrorBoundary;
 var _default = ErrorBoundary;
 exports.default = _default;

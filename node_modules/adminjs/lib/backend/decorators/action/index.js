@@ -9,5 +9,7 @@ Object.defineProperty(exports, "ActionDecorator", {
     return _actionDecorator.default;
   }
 });
+
 var _actionDecorator = _interopRequireDefault(require("./action-decorator"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _set = require("./set");
+
 describe('module:flat.set', () => {
   let params;
   let newParams;

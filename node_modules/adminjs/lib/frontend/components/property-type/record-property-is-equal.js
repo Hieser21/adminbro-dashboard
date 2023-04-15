@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.recordPropertyIsEqual = void 0;
+
 /* eslint-disable import/prefer-default-export */
 
 /**
@@ -19,4 +20,5 @@ const recordPropertyIsEqual = (prevProps, nextProps) => {
   const nextError = nextProps.record.errors[nextProps.property.path];
   return prevValue === nextValue && prevError === nextError;
 };
+
 exports.recordPropertyIsEqual = recordPropertyIsEqual;

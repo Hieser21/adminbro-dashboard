@@ -4,11 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.initializeStore = exports.default = void 0;
+
 var _store = _interopRequireDefault(require("./store"));
+
 var _actions = require("./actions");
+
 var _pagesToStore = _interopRequireDefault(require("./pages-to-store"));
+
 var _optionsParser = require("../../backend/utils/options-parser/options-parser");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const initializeStore = async (admin, currentAdmin) => {
   const store = (0, _store.default)();
   const AdminClass = admin.constructor;
@@ -51,6 +57,7 @@ const initializeStore = async (admin, currentAdmin) => {
   }));
   return store;
 };
+
 exports.initializeStore = initializeStore;
 var _default = initializeStore;
 exports.default = _default;

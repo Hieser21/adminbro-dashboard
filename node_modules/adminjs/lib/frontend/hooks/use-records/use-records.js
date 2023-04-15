@@ -4,15 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.useRecords = exports.default = useRecords;
-var _react = require("react");
-var _reactRouter = require("react-router");
-var _useNotice = _interopRequireDefault(require("../use-notice"));
-var _apiClient = _interopRequireDefault(require("../../utils/api-client"));
-var _useTranslation = require("../use-translation");
-var _appendForceRefresh = require("../../components/actions/utils/append-force-refresh");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const api = new _apiClient.default();
 
+var _react = require("react");
+
+var _reactRouter = require("react-router");
+
+var _useNotice = _interopRequireDefault(require("../use-notice"));
+
+var _apiClient = _interopRequireDefault(require("../../utils/api-client"));
+
+var _useTranslation = require("../use-translation");
+
+var _appendForceRefresh = require("../../components/actions/utils/append-force-refresh");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const api = new _apiClient.default();
 /**
  * @load ./use-records.doc.md
  * @subcategory Hooks
@@ -24,6 +31,7 @@ const api = new _apiClient.default();
  * @bundle
  * @type {Function}
  */
+
 function useRecords(resourceId) {
   const [records, setRecords] = (0, _react.useState)([]);
   const [loading, setLoading] = (0, _react.useState)(false);
@@ -39,6 +47,7 @@ function useRecords(resourceId) {
     translateMessage
   } = (0, _useTranslation.useTranslation)();
   const onNotice = (0, _useNotice.default)();
+
   const fetchData = () => {
     setLoading(true);
     const query = new URLSearchParams(location.search);
@@ -49,13 +58,16 @@ function useRecords(resourceId) {
     });
     promise.then(response => {
       const listActionResponse = response.data;
+
       if (listActionResponse.notice) {
         onNotice(listActionResponse.notice);
       }
+
       if (listActionResponse.redirectUrl) {
         navigate(listActionResponse.redirectUrl);
         return;
       }
+
       setRecords(listActionResponse.records);
       setPage(listActionResponse.meta.page);
       setPerPage(listActionResponse.meta.perPage);
@@ -71,6 +83,7 @@ function useRecords(resourceId) {
     });
     return promise;
   };
+
   (0, _react.useEffect)(() => {
     if ((0, _appendForceRefresh.hasForceRefresh)(location.search)) {
       navigate({

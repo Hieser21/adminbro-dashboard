@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _get = require("./get");
+
 describe('module:flat.get', () => {
   let params;
   beforeEach(() => {

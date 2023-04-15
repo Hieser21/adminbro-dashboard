@@ -9,5 +9,7 @@ Object.defineProperty(exports, "SortSetter", {
     return _sortSetter.default;
   }
 });
+
 var _sortSetter = _interopRequireDefault(require("./sort-setter"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

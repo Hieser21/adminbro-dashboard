@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _getNavigation = require("./get-navigation");
+
 const databaseName = 'mysql-database';
 const databaseType = 'MySQL';
 const defaultDatabase = {

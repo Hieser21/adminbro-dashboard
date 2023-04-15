@@ -1,13 +1,21 @@
 "use strict";
 
 var _sinon = _interopRequireDefault(require("sinon"));
+
 var _chai = require("chai");
+
 var _baseResource = _interopRequireDefault(require("../../adapters/resource/base-resource"));
+
 var _baseRecord = _interopRequireDefault(require("../../adapters/record/base-record"));
+
 var _validationError = _interopRequireDefault(require("../../utils/errors/validation-error"));
+
 var _actionErrorHandler = _interopRequireDefault(require("./action-error-handler"));
+
 var _forbiddenError = _interopRequireDefault(require("../../utils/errors/forbidden-error"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('ActionErrorHandler', function () {
   let resource;
   let record;

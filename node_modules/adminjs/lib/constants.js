@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.DOCS = exports.DEFAULT_PATHS = exports.ADMIN_JS_TMP_DIR = void 0;
+
 /* cspell: disable */
 const DOCS = 'https://docs.adminjs.co';
 exports.DOCS = DOCS;

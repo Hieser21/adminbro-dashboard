@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getNavigation = exports.getIcon = exports.DEFAULT_ICON = void 0;
 const DEFAULT_ICON = 'Archive';
 exports.DEFAULT_ICON = DEFAULT_ICON;
+
 const getIcon = icon => {
   const IconMap = {
     MariaDB: 'Sql',
@@ -21,12 +22,16 @@ const getIcon = icon => {
   };
   return icon && IconMap[icon] ? IconMap[icon] : DEFAULT_ICON;
 };
+
 exports.getIcon = getIcon;
+
 const getNavigation = (options, database) => {
   const navigationOption = typeof options.navigation !== 'undefined' ? options.navigation : options.parent;
+
   if (navigationOption === null || navigationOption === true) {
     return null;
   }
+
   if (navigationOption === false) {
     return {
       name: null,
@@ -34,6 +39,7 @@ const getNavigation = (options, database) => {
       show: false
     };
   }
+
   if (navigationOption === undefined || typeof navigationOption === 'string') {
     return {
       name: navigationOption || database.databaseName(),
@@ -41,6 +47,7 @@ const getNavigation = (options, database) => {
       show: true
     };
   }
+
   const {
     name,
     icon
@@ -51,4 +58,5 @@ const getNavigation = (options, database) => {
     show: true
   };
 };
+
 exports.getNavigation = getNavigation;

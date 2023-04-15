@@ -9,5 +9,7 @@ Object.defineProperty(exports, "BaseDatabase", {
     return _baseDatabase.default;
   }
 });
+
 var _baseDatabase = _interopRequireDefault(require("./base-database"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

@@ -4,12 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 var _react = _interopRequireDefault(require("react"));
+
 var _server = require("react-router-dom/server");
+
 var _styledComponents = require("styled-components");
+
 var _designSystem = require("@adminjs/design-system");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const theme = (0, _designSystem.combineStyles)({});
+
 const TestContextProvider = props => {
   const {
     children,
@@ -21,5 +28,6 @@ const TestContextProvider = props => {
     location: location || '/'
   }, children));
 };
+
 var _default = TestContextProvider;
 exports.default = _default;

@@ -5,8 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 var _exportNames = {};
 exports.default = void 0;
+
 var _adminjs = _interopRequireDefault(require("./adminjs"));
+
 var _backend = require("./backend");
+
 Object.keys(_backend).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -18,7 +21,9 @@ Object.keys(_backend).forEach(function (key) {
     }
   });
 });
+
 var _frontend = require("./frontend");
+
 Object.keys(_frontend).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -30,7 +35,9 @@ Object.keys(_frontend).forEach(function (key) {
     }
   });
 });
+
 var _locale = require("./locale");
+
 Object.keys(_locale).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -42,7 +49,9 @@ Object.keys(_locale).forEach(function (key) {
     }
   });
 });
+
 var _utils = require("./utils");
+
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -54,7 +63,9 @@ Object.keys(_utils).forEach(function (key) {
     }
   });
 });
+
 var _constants = require("./constants");
+
 Object.keys(_constants).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -66,7 +77,9 @@ Object.keys(_constants).forEach(function (key) {
     }
   });
 });
+
 var _adminjsOptions = require("./adminjs-options.interface");
+
 Object.keys(_adminjsOptions).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -78,7 +91,9 @@ Object.keys(_adminjsOptions).forEach(function (key) {
     }
   });
 });
+
 var _currentAdmin = require("./current-admin.interface");
+
 Object.keys(_currentAdmin).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -90,6 +105,8 @@ Object.keys(_currentAdmin).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var _default = _adminjs.default;
 exports.default = _default;

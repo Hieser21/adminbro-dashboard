@@ -4,13 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.buildActionClickHandler = void 0;
-var _actionHasComponent = require("./action-has-component");
-var _actionHref = require("./action-href");
-var _buildActionApiCallTrigger = require("./build-action-api-call-trigger");
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-undef */
-/* eslint-disable no-alert */
 
+var _actionHasComponent = require("./action-has-component");
+
+var _actionHref = require("./action-href");
+
+var _buildActionApiCallTrigger = require("./build-action-api-call-trigger");
+
+/* eslint-disable no-restricted-globals */
+
+/* eslint-disable no-undef */
+
+/* eslint-disable no-alert */
 const buildActionClickHandler = options => {
   const {
     action,
@@ -18,6 +23,7 @@ const buildActionClickHandler = options => {
     actionResponseHandler,
     navigate
   } = options;
+
   const handleActionClick = event => {
     event.preventDefault();
     event.stopPropagation();
@@ -27,17 +33,22 @@ const buildActionClickHandler = options => {
       action,
       actionResponseHandler
     });
+
     if (action.guard && !confirm(action.guard)) {
       return;
     }
+
     if ((0, _actionHasComponent.actionHasComponent)(action)) {
       // eslint-disable-next-line consistent-return
       return callApi();
     }
+
     if (href) {
       navigate(href);
     }
   };
+
   return handleActionClick;
 };
+
 exports.buildActionClickHandler = buildActionClickHandler;

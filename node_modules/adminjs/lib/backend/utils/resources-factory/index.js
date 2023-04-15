@@ -9,5 +9,7 @@ Object.defineProperty(exports, "ResourcesFactory", {
     return _resourcesFactory.default;
   }
 });
+
 var _resourcesFactory = _interopRequireDefault(require("./resources-factory"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

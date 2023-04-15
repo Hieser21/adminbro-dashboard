@@ -1,10 +1,15 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _factoryGirl = _interopRequireDefault(require("factory-girl"));
+
 var _actionsToButtonGroup = require("./actions-to-button-group");
+
 require("../../spec/action-json.factory");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('actionsToButtonGroup', () => {
   let actions;
   const actionsCount = 5;
@@ -14,7 +19,9 @@ describe('actionsToButtonGroup', () => {
     recordsId: ['recordId']
   };
   let buttonGroupProps;
+
   const handleClick = () => true;
+
   context('flat actions (no nesting)', () => {
     beforeEach(async () => {
       actions = await _factoryGirl.default.buildMany('ActionJSON', actionsCount, {

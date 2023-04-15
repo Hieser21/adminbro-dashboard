@@ -1,9 +1,13 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _layoutTemplate = _interopRequireDefault(require("./layout-template"));
+
 var _adminjs = _interopRequireDefault(require("../adminjs"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('layoutTemplate', function () {
   context('AdminJS with branding options set as a function', function () {
     const companyName = 'Dynamic Company';

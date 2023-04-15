@@ -4,8 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.ShowAction = void 0;
+
 var _notFoundError = _interopRequireDefault(require("../../utils/errors/not-found-error"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @implements Action
  * @category Actions
@@ -21,6 +24,7 @@ const ShowAction = {
   actionType: 'record',
   icon: 'Screen',
   showInDrawer: false,
+
   /**
    * Responsible for returning data for given record.
    *
@@ -34,6 +38,7 @@ const ShowAction = {
     if (!data.record) {
       throw new _notFoundError.default([`Record of given id ("${request.params.recordId}") could not be found`].join('\n'), 'Action#handler');
     }
+
     return {
       record: data.record.toJSON(data.currentAdmin)
     };

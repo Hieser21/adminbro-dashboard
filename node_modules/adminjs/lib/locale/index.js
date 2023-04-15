@@ -35,13 +35,21 @@ Object.defineProperty(exports, "zhCNLocale", {
     return _zhCn.default;
   }
 });
+
 var _de = _interopRequireDefault(require("./de"));
+
 var _en = _interopRequireDefault(require("./en"));
+
 var _it = _interopRequireDefault(require("./it"));
+
 var _ptBr = _interopRequireDefault(require("./pt-br"));
+
 var _ua = _interopRequireDefault(require("./ua"));
+
 var _zhCn = _interopRequireDefault(require("./zh-cn"));
+
 var _config = require("./config");
+
 Object.keys(_config).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -53,7 +61,9 @@ Object.keys(_config).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const locales = {
   de: _de.default,
   en: _en.default,

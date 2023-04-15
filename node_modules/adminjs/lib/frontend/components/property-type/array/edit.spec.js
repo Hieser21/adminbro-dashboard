@@ -1,27 +1,43 @@
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
+
 var _chai = require("chai");
+
 var _react2 = require("@testing-library/react");
+
 var _factoryGirl = _interopRequireDefault(require("factory-girl"));
+
 var _sinon = _interopRequireDefault(require("sinon"));
+
 require("sinon-chai");
+
 var _edit = _interopRequireDefault(require("./edit"));
+
 var _testContextProvider = _interopRequireDefault(require("../../spec/test-context-provider"));
+
 require("../../spec/property-json.factory");
+
 require("../../spec/record-json.factory");
+
 var _edit2 = _interopRequireDefault(require("../default-type/edit"));
+
 var TranslateFunctionsFactory = _interopRequireWildcard(require("../../../../utils/translate-functions.factory"));
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const AddNewItemText = 'Add new item';
 describe('<PropertyType.Array.Edit />', function () {
   const propertyPath = 'arrayField';
   let property;
-  let record;
-  // eslint-disable-next-line mocha/no-setup-in-describe
+  let record; // eslint-disable-next-line mocha/no-setup-in-describe
+
   const onChange = _sinon.default.spy();
+
   const renderTestSubject = (prop, rec) => (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_testContextProvider.default, null, /*#__PURE__*/_react.default.createElement(_edit.default, {
     where: "edit",
     property: prop,
@@ -32,6 +48,7 @@ describe('<PropertyType.Array.Edit />', function () {
     filter: {},
     resource: {}
   })));
+
   beforeEach(function () {
     _sinon.default.stub(TranslateFunctionsFactory, 'createFunctions').returns({
       translateProperty: _sinon.default.stub().returns(AddNewItemText),
@@ -40,6 +57,7 @@ describe('<PropertyType.Array.Edit />', function () {
   });
   afterEach(function () {
     _sinon.default.restore();
+
     (0, _react2.cleanup)();
   });
   context('Property with a string array', function () {
@@ -70,7 +88,9 @@ describe('<PropertyType.Array.Edit />', function () {
         const {
           getByText
         } = renderTestSubject(property, record);
+
         _react2.fireEvent.click(getByText(AddNewItemText));
+
         (0, _chai.expect)(onChange).to.has.been.calledWith(property.path, ['']);
       });
     });

@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _removePath = require("./remove-path");
+
 describe('removePath', () => {
   let params;
   beforeEach(() => {

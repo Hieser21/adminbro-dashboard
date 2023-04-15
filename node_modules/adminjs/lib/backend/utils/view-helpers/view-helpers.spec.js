@@ -1,8 +1,11 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _viewHelpers = _interopRequireDefault(require("./view-helpers"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('ViewHelpers', function () {
   describe('#urlBuilder', function () {
     it('returns joined path for default rootUrl', function () {

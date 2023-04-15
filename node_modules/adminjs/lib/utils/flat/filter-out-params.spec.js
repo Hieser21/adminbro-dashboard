@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _filterOutParams = require("./filter-out-params");
+
 describe('filterOutParams', () => {
   const params = {
     name: 'John',

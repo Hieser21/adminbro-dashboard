@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
 var _errorType = require("./error-type.enum");
+
 Object.keys(_errorType).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _errorType[key]) return;
@@ -14,7 +16,9 @@ Object.keys(_errorType).forEach(function (key) {
     }
   });
 });
+
 var _translateFunctions = require("./translate-functions.factory");
+
 Object.keys(_translateFunctions).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _translateFunctions[key]) return;
@@ -25,7 +29,9 @@ Object.keys(_translateFunctions).forEach(function (key) {
     }
   });
 });
+
 var _flat = require("./flat");
+
 Object.keys(_flat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _flat[key]) return;
@@ -36,7 +42,9 @@ Object.keys(_flat).forEach(function (key) {
     }
   });
 });
+
 var _paramConverter = require("./param-converter");
+
 Object.keys(_paramConverter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _paramConverter[key]) return;

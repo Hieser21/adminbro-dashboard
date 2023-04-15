@@ -4,8 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.useCurrentAdmin = useCurrentAdmin;
+
 var _reactRedux = require("react-redux");
+
 var _setCurrentAdmin = require("../store/actions/set-current-admin");
+
 /**
  * @classdesc
  * Hook which allows you to get and set currentAdmin
@@ -32,7 +35,6 @@ function useCurrentAdmin() {
   const dispatch = (0, _reactRedux.useDispatch)();
   return [currentAdmin, admin => dispatch((0, _setCurrentAdmin.setCurrentAdmin)(admin))];
 }
-
 /**
  * Result of the {@link useCurrentAdmin}.
  * It is a tuple containing value and the setter

@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _convertParam = require("./convert-param");
+
 describe('module:paramConverter.convertParam', () => {
   it('should convert numeric strings to Number', () => {
     (0, _chai.expect)((0, _convertParam.convertParam)('123', 'number')).to.equal(123);

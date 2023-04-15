@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
 var _allowOverride = require("./allow-override");
+
 Object.keys(_allowOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _allowOverride[key]) return;
@@ -14,7 +16,9 @@ Object.keys(_allowOverride).forEach(function (key) {
     }
   });
 });
+
 var _withNotice = require("./with-notice");
+
 Object.keys(_withNotice).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _withNotice[key]) return;

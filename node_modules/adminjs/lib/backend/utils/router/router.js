@@ -4,16 +4,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Router = void 0;
-var path = _interopRequireWildcard(require("path"));
-var _userComponentsBundler = require("../../bundler/user-components-bundler");
-var _appController = _interopRequireDefault(require("../../controllers/app-controller"));
-var _apiController = _interopRequireDefault(require("../../controllers/api-controller"));
-var _bundlerEnv = _interopRequireDefault(require("../../bundler/bundler-env"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-const ASSETS_ROOT = `${__dirname}/../../../frontend/assets/`;
 
+var path = _interopRequireWildcard(require("path"));
+
+var _userComponentsBundler = require("../../bundler/user-components-bundler");
+
+var _appController = _interopRequireDefault(require("../../controllers/app-controller"));
+
+var _apiController = _interopRequireDefault(require("../../controllers/api-controller"));
+
+var _bundlerEnv = _interopRequireDefault(require("../../bundler/bundler-env"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+const ASSETS_ROOT = `${__dirname}/../../../frontend/assets/`;
 /**
  * Type representing the AdminJS.Router
  * @memberof Router
@@ -131,8 +139,7 @@ const Router = {
     path: '/api/dashboard',
     Controller: _apiController.default,
     action: 'dashboard'
-  },
-  // Pages
+  }, // Pages
   {
     method: 'GET',
     path: '/pages/{pageName}',
@@ -151,6 +158,7 @@ const Router = {
   }]
 };
 exports.Router = Router;
+
 if (process.env.NODE_ENV === 'production') {
   Router.assets.push({
     path: '/frontend/assets/components.bundle.js',
@@ -165,5 +173,6 @@ if (process.env.NODE_ENV === 'production') {
     contentType: 'text/javascript;charset=utf-8'
   });
 }
+
 var _default = Router;
 exports.default = _default;

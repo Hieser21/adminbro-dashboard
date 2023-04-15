@@ -12,8 +12,11 @@ Object.defineProperty(exports, "BaseRecord", {
     return _baseRecord.default;
   }
 });
+
 var _baseRecord = _interopRequireDefault(require("./base-record"));
+
 var _params = require("./params.type");
+
 Object.keys(_params).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -25,4 +28,5 @@ Object.keys(_params).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

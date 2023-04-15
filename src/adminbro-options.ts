@@ -6,9 +6,10 @@ import bcrypt from 'bcrypt'
 import Users from './db/Users'
 import Reports from './db/Reports'
 import Announce from './db/Announce'
+import Exploiter from './db/Exploiter'
 const componentLoader = new ComponentLoader()
 const beforeAction = (request, context) => {
-  if (context.currentAdmin.role !== 'Admin') {
+  if (context.currentAdmin.role !== 'Developer') {
     const { query = {} } = request
 
     const newQuery = {
@@ -30,68 +31,29 @@ const Component = {
 };
 AdminJS.registerAdapter(AdminJSMongoose)
 const contentNavigation = {
-  name: 'Components',
+  name: 'Logs',
   icon: 'Dashboard'
 }
-const canModifyUsers = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Admin'
-const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Admin'
+const canModifyUsers = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
+const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
 
 
 
 const adminBroOptions = new AdminJS({
   resources: [
     {
-      resource: Users,
+      resource: Exploiter,
       options: {
         navigation: contentNavigation,
         properties: {
           _id: { isVisible: false },
-          email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
-          encryptedPassword: { isVisible: false, type: 'password' },
-          type: {
-            isVisible: { list: false, filter: false, show: false }
-          },
-          password: {
-            type: 'password',
-            isVisible: {
-              list: false, edit: true, filter: false, show: false
-            }
-          },
-          updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
-          createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
+          exploited: { isVisible: { list: true, filter: true, show: true, edit: true } },
+          createdAt: { isVisible: { list: true, filter: true, show: true, edit: true} }
         },
         actions: {
-          list: {
-            before: beforeAction
-          },
-          new: {
-            before: async (request) => {
-              if (request.payload.password) {
-                request.payload = {
-                  ...request.payload,
-                  encryptedPassword: await bcrypt.hash(request.payload.password, 10),
-                  password: undefined,
-                }
-              }
-              return request
-            },
-            isAccessible: canModifyUsers,
-          },
-          edit: {
-            before: async (request: any) => {
-              if (request.payload.password) {
-                request.payload = {
-                  ...request.payload,
-                  encryptedPassword: await bcrypt.hash(request.payload.password, 10)
-                }
-              }
-              return request
-            },
-            isAccessible: canModifyUsers
-          },
-          delete: { isAccessible: canModifyUsers }
-        }
-      }
+          list: beforeAction 
+        
+        }}
     },
     {
       resource: Reports,
@@ -154,7 +116,8 @@ const adminBroOptions = new AdminJS({
         loginWelcome: 'Aspect Systems',
         Users: 'Users',
         Announce: 'Announcements',
-        Email: 'Email'
+        Email: 'Email',
+        Exploiter: 'Users'
       }
     }
   },

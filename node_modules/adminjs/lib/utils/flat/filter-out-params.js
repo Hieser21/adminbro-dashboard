@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.filterOutParams = void 0;
+
 var _propertyKeyRegex = require("./property-key-regex");
+
 /**
  * @load ./filter-out-params.doc.md
  * @memberof module:flat
@@ -22,4 +24,5 @@ const filterOutParams = (params, properties) => {
     }, {});
   }, params);
 };
+
 exports.filterOutParams = filterOutParams;

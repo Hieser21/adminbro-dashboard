@@ -1,12 +1,19 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _sinon = _interopRequireDefault(require("sinon"));
+
 var _ = require("..");
+
 var _adminjs = _interopRequireDefault(require("../../../../adminjs"));
+
 var _adapters = require("../../../adapters");
+
 var _decorateProperties = require("./decorate-properties");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('decorateProperties', () => {
   const path = 'propertyPath';
   let admin;
@@ -112,8 +119,11 @@ describe('decorateProperties', () => {
         path: nestedPath.split('.')[2],
         type: 'mixed'
       });
+
       _sinon.default.stub(property, 'subProperties').returns([subPropertyLevel1]);
+
       _sinon.default.stub(subPropertyLevel1, 'subProperties').returns([subPropertyLevel2]);
+
       resource.properties.returns([property]);
     });
     context('options were not set', () => {

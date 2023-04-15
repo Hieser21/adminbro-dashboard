@@ -9,5 +9,7 @@ Object.defineProperty(exports, "edit", {
     return _edit.default;
   }
 });
+
 var _edit = _interopRequireDefault(require("./edit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

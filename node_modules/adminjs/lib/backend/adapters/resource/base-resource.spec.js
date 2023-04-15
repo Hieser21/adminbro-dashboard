@@ -1,17 +1,29 @@
 "use strict";
 
 var _chai = _interopRequireWildcard(require("chai"));
+
 var _sinon = _interopRequireDefault(require("sinon"));
+
 var _chaiAsPromised = _interopRequireDefault(require("chai-as-promised"));
+
 var _baseResource = _interopRequireDefault(require("./base-resource"));
+
 var _notImplementedError = _interopRequireDefault(require("../../utils/errors/not-implemented-error"));
+
 var _baseRecord = _interopRequireDefault(require("../record/base-record"));
+
 var _adminjs = _interopRequireDefault(require("../../../adminjs"));
+
 var _resourceDecorator = _interopRequireDefault(require("../../decorators/resource/resource-decorator"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 _chai.default.use(_chaiAsPromised.default);
+
 describe('BaseResource', function () {
   let resource;
   beforeEach(function () {
@@ -91,6 +103,7 @@ describe('BaseResource', function () {
   describe('#decorate', function () {
     it('returns new Decorator when resource has been decorated', function () {
       _sinon.default.stub(resource, 'properties').returns([]);
+
       resource.assignDecorator(new _adminjs.default(), {});
       (0, _chai.expect)(resource.decorate()).to.be.instanceOf(_resourceDecorator.default);
     });

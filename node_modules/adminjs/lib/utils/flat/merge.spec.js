@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _merge = require("./merge");
+
 describe('merge', () => {
   it('removes nulled arrays when nested items were found', () => {
     const object1 = {

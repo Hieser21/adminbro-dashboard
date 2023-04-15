@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _selectParams = require("./select-params");
+
 describe('selectParams', () => {
   const params = {
     name: 'John',

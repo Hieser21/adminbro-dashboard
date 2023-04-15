@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.useResource = exports.default = void 0;
+
 var _reactRedux = require("react-redux");
+
 /**
  * @load ./use-resource.doc.md
  * @subcategory Hooks
@@ -18,4 +20,5 @@ const useResource = resourceId => {
   const foundResource = resources.find(resource => resource.id === resourceId);
   return foundResource;
 };
+
 exports.useResource = exports.default = useResource;

@@ -4,11 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 var _designSystem = require("@adminjs/design-system");
+
 var _viewHelpers = _interopRequireDefault(require("../backend/utils/view-helpers/view-helpers"));
+
 var _store = require("./store");
+
 var _optionsParser = require("../backend/utils/options-parser/options-parser");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 /**
@@ -69,5 +75,6 @@ const html = async (admin, currentAdmin, location = '/') => {
     </html>
   `;
 };
+
 var _default = html;
 exports.default = _default;

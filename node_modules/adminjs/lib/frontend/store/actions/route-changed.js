@@ -8,13 +8,17 @@ const INITIAL_ROUTE = 'INITIAL_ROUTE';
 exports.INITIAL_ROUTE = INITIAL_ROUTE;
 const ROUTE_CHANGED = 'ROUTE_CHANGED';
 exports.ROUTE_CHANGED = ROUTE_CHANGED;
+
 const initializeRoute = location => ({
   type: ROUTE_CHANGED,
   data: location
 });
+
 exports.initializeRoute = initializeRoute;
+
 const changeRoute = location => ({
   type: ROUTE_CHANGED,
   data: location
 });
+
 exports.changeRoute = changeRoute;

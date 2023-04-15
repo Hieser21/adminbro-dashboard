@@ -1,19 +1,28 @@
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
+
 var _react2 = require("@testing-library/react");
+
 var _factoryGirl = _interopRequireDefault(require("factory-girl"));
+
 var _chai = require("chai");
+
 var _testContextProvider = _interopRequireDefault(require("../../spec/test-context-provider"));
+
 var _propertyHeader = _interopRequireDefault(require("./property-header"));
+
 require("../../spec/property-json.factory");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const renderSubject = (property, sortBy, sortDirection) => (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_testContextProvider.default, null, /*#__PURE__*/_react.default.createElement("table", null, /*#__PURE__*/_react.default.createElement("tbody", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement(_propertyHeader.default, {
   property: property,
   titleProperty: property,
   sortBy: sortBy,
   direction: sortDirection
 }))))));
+
 describe('<PropertyHeader />', function () {
   const direction = 'desc';
   const sortBy = 'otherProperty';

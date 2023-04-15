@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.AppError = void 0;
+
 var _errorType = require("../../../utils/error-type.enum");
+
 /**
  * Error which can be thrown by developer in custom actions/hooks/components
  *
@@ -42,7 +44,9 @@ class AppError extends Error {
     this.data = data;
     this.name = _errorType.ErrorTypeEnum.App;
   }
+
 }
+
 exports.AppError = AppError;
 var _default = AppError;
 exports.default = _default;

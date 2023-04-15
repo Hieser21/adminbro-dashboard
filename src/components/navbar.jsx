@@ -1,6 +1,7 @@
 import { CurrentUserNav, Box} from '@adminjs/design-system'
 import { useCurrentAdmin } from 'adminjs'
 import {useSelector} from 'react-redux'
+import {Asleep16, Awake16} from '@carbon/icons-react'
 import styled from 'styled-components'
 let currentAdminUser;
 let toggler;
@@ -46,9 +47,10 @@ const TopBar = (props) => {
             href: 'https://discord.gg/FrxXABtE',
             onClick: function noRefCheck() { }
           },
+          
         ]}
         name={currentAdmin.name}
-        title={currentAdmin.title}
+        title={currentAdmin.role}
       />
     </Box>
   )

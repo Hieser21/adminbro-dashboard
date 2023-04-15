@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
 var _action = require("./action");
+
 Object.keys(_action).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _action[key]) return;
@@ -14,7 +16,9 @@ Object.keys(_action).forEach(function (key) {
     }
   });
 });
+
 var _property = require("./property");
+
 Object.keys(_property).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _property[key]) return;
@@ -25,7 +29,9 @@ Object.keys(_property).forEach(function (key) {
     }
   });
 });
+
 var _resource = require("./resource");
+
 Object.keys(_resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _resource[key]) return;

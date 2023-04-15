@@ -12,8 +12,11 @@ Object.defineProperty(exports, "ResourceDecorator", {
     return _resourceDecorator.default;
   }
 });
+
 var _resourceDecorator = _interopRequireDefault(require("./resource-decorator"));
+
 var _resourceOptions = require("./resource-options.interface");
+
 Object.keys(_resourceOptions).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -25,4 +28,5 @@ Object.keys(_resourceOptions).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

@@ -1,11 +1,14 @@
 "use strict";
 
 var _chai = require("chai");
-var _apiController = _interopRequireDefault(require("./api-controller"));
-var _filter = require("../utils/filter");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 
+var _apiController = _interopRequireDefault(require("./api-controller"));
+
+var _filter = require("../utils/filter");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 describe('ApiController', function () {
   beforeEach(function () {
     this.total = 0;
@@ -101,6 +104,7 @@ describe('ApiController', function () {
       this.action.handler = async () => ({
         someData: 'without an record'
       });
+
       this.apiController.recordAction({
         params: {
           action: this.action.name,

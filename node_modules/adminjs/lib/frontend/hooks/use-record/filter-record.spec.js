@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _filterRecord = require("./filter-record");
+
 describe('isPropertyPermitted', () => {
   it('permit property when options are not set ', () => {
     (0, _chai.expect)((0, _filterRecord.isPropertyPermitted)('name')).to.equal(true);

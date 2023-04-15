@@ -4,9 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.buildActionCallApiTrigger = void 0;
-var _callActionApi = require("./call-action-api");
-/* eslint-disable arrow-parens */
 
+var _callActionApi = require("./call-action-api");
+
+/* eslint-disable arrow-parens */
 const buildActionCallApiTrigger = options => {
   const {
     action,
@@ -14,6 +15,7 @@ const buildActionCallApiTrigger = options => {
     actionResponseHandler,
     search
   } = options;
+
   const callApi = () => {
     const promise = (0, _callActionApi.callActionApi)(action, params, search);
     promise.then(actionResponseHandler).catch(error => {
@@ -21,6 +23,8 @@ const buildActionCallApiTrigger = options => {
     });
     return promise;
   };
+
   return callApi;
 };
+
 exports.buildActionCallApiTrigger = buildActionCallApiTrigger;

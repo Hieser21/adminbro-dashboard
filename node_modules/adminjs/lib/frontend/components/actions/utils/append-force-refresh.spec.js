@@ -1,7 +1,9 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _appendForceRefresh = require("./append-force-refresh");
+
 describe('appendForceRefresh', () => {
   it('should add ?refresh=true to url if url has no search params', () => {
     const oldUrl = '/resources/Test';

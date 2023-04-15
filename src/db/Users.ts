@@ -25,11 +25,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  robloxID: {
-    type: String
-  },
-  game: { type: String },
-  role: { type: String, enum: ['Admin', 'General'], required: true },
+  userid: { type: String },
+  role:  { type: String, enum: ['Owner', 'Developer'], required: true },
+  game: { type: String, required: true}
 },
 
   {

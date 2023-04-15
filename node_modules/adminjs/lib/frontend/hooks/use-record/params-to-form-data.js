@@ -11,8 +11,8 @@ const FORM_VALUE_EMPTY_OBJECT = '__FORM_VALUE_EMPTY_OBJECT__';
 exports.FORM_VALUE_EMPTY_OBJECT = FORM_VALUE_EMPTY_OBJECT;
 const FORM_VALUE_EMPTY_ARRAY = '__FORM_VALUE_EMPTY_ARRAY__';
 exports.FORM_VALUE_EMPTY_ARRAY = FORM_VALUE_EMPTY_ARRAY;
-const isObjectOrArray = value => typeof value === 'object' && value.constructor !== File && !(value instanceof Date);
 
+const isObjectOrArray = value => typeof value === 'object' && value.constructor !== File && !(value instanceof Date);
 /**
  * Changes RecordJSON that it can be send as a FormData to the backend.
  *
@@ -25,29 +25,33 @@ const isObjectOrArray = value => typeof value === 'object' && value.constructor 
  * @param   {RecordJSON}  record
  * @return  {FormData}
  */
-function paramsToFormData(params) {
-  const formData = new FormData();
 
-  // Assume that params are flatted
+
+function paramsToFormData(params) {
+  const formData = new FormData(); // Assume that params are flatted
+
   Object.entries(params).forEach(([key, value]) => {
     // {@link updateRecord} does not change empty objects "{}" - so in order to prevent having
     // them changed to "[object Object]" we have to set them to empty strings.
     if (value === null) {
       return formData.set(key, FORM_VALUE_NULL);
-    }
-    // File objects has to go through because they are handled by FormData
+    } // File objects has to go through because they are handled by FormData
+
+
     if (isObjectOrArray(value)) {
       if (Array.isArray(value)) {
         return formData.set(key, FORM_VALUE_EMPTY_ARRAY);
       }
+
       return formData.set(key, FORM_VALUE_EMPTY_OBJECT);
-    }
-    // Convert Date fields to UTC timezone
+    } // Convert Date fields to UTC timezone
+
+
     if (value instanceof Date) {
       return formData.set(key, value.toISOString());
-    }
+    } // Rest goes as a standard value
 
-    // Rest goes as a standard value
+
     return formData.set(key, value);
   });
   return formData;

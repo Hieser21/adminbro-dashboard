@@ -1,8 +1,11 @@
 "use strict";
 
 var _chai = require("chai");
+
 var _layoutElementParser = _interopRequireDefault(require("./layout-element-parser"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 describe('layoutElementParser', function () {
   const propertyName = 'name';
   const property2 = 'surname';

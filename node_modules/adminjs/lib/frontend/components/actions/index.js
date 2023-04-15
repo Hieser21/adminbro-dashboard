@@ -7,7 +7,9 @@ var _exportNames = {
   actions: true
 };
 exports.actions = void 0;
+
 var _new = require("./new");
+
 Object.keys(_new).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -19,7 +21,9 @@ Object.keys(_new).forEach(function (key) {
     }
   });
 });
+
 var _edit = require("./edit");
+
 Object.keys(_edit).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -31,7 +35,9 @@ Object.keys(_edit).forEach(function (key) {
     }
   });
 });
+
 var _show = require("./show");
+
 Object.keys(_show).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -43,7 +49,9 @@ Object.keys(_show).forEach(function (key) {
     }
   });
 });
+
 var _list = require("./list");
+
 Object.keys(_list).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -55,7 +63,9 @@ Object.keys(_list).forEach(function (key) {
     }
   });
 });
+
 var _bulkDelete = require("./bulk-delete");
+
 Object.keys(_bulkDelete).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -67,7 +77,9 @@ Object.keys(_bulkDelete).forEach(function (key) {
     }
   });
 });
+
 var _action = require("./action.props");
+
 Object.keys(_action).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -79,7 +91,9 @@ Object.keys(_action).forEach(function (key) {
     }
   });
 });
+
 var _utils = require("./utils");
+
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;

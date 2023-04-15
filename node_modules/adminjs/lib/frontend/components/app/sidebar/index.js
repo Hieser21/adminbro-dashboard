@@ -12,8 +12,11 @@ Object.defineProperty(exports, "Sidebar", {
     return _sidebar.default;
   }
 });
+
 var _sidebar = _interopRequireDefault(require("./sidebar"));
+
 var _sidebarResourceSection = require("./sidebar-resource-section");
+
 Object.keys(_sidebarResourceSection).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -25,4 +28,5 @@ Object.keys(_sidebarResourceSection).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

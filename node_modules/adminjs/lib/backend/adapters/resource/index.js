@@ -12,8 +12,11 @@ Object.defineProperty(exports, "BaseResource", {
     return _baseResource.default;
   }
 });
+
 var _baseResource = _interopRequireDefault(require("./base-resource"));
+
 var _supportedDatabases = require("./supported-databases.type");
+
 Object.keys(_supportedDatabases).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -25,4 +28,5 @@ Object.keys(_supportedDatabases).forEach(function (key) {
     }
   });
 });
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

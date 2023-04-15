@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-/* spellchecker: disable */
 
+/* spellchecker: disable */
 const translations = {
   actions: {
     new: 'Crea nuovo',

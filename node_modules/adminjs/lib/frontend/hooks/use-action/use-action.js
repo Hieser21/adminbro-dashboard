@@ -4,10 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.useAction = useAction;
+
 var _reactRouter = require("react-router");
+
 var _interfaces = require("../../interfaces");
+
 var _actionHref = require("../../interfaces/action/action-href");
+
 var _useActionResponseHandler = require("./use-action-response-handler");
+
 /**
  * @load ./use-action.doc.md
  * @subcategory Hooks

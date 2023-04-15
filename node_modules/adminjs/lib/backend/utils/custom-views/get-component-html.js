@@ -5,20 +5,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 exports.getComponentHtml = getComponentHtml;
+
 var _react = _interopRequireDefault(require("react"));
+
 var _server = require("react-dom/server");
+
 var _styledComponents = require("styled-components");
+
 var _reactRedux = require("react-redux");
+
 var _reactI18next = require("react-i18next");
+
 var _designSystem = require("@adminjs/design-system");
+
 var _i18next = _interopRequireDefault(require("i18next"));
+
 var _optionsParser = require("../../../backend/utils/options-parser/options-parser");
+
 var _viewHelpers = _interopRequireDefault(require("../../../backend/utils/view-helpers/view-helpers"));
+
 var _initializeAssets = require("../../../frontend/store/actions/initialize-assets");
+
 var _initializeBranding = require("../../../frontend/store/actions/initialize-branding");
+
 var _initializeLocale = require("../../../frontend/store/actions/initialize-locale");
+
 var _store = _interopRequireDefault(require("../../../frontend/store/store"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 async function getComponentHtml(Component, props, admin) {
   const h = new _viewHelpers.default({
     options: admin.options
@@ -36,6 +51,7 @@ async function getComponentHtml(Component, props, admin) {
   const {
     locale
   } = store.getState();
+
   _i18next.default.init({
     resources: {
       [locale.language]: {
@@ -47,6 +63,7 @@ async function getComponentHtml(Component, props, admin) {
       escapeValue: false
     }
   });
+
   const sheet = new _styledComponents.ServerStyleSheet();
   const component = (0, _server.renderToString)( /*#__PURE__*/_react.default.createElement(_styledComponents.StyleSheetManager, {
     sheet: sheet.instance
@@ -82,5 +99,6 @@ async function getComponentHtml(Component, props, admin) {
     </html>
   `;
 }
+
 var _default = getComponentHtml;
 exports.default = _default;
