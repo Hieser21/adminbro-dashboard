@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
 import { default as MongoStore} from 'connect-mongo'
-
+import * as randomstring from  'randomstring'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
@@ -29,7 +29,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   store: sessionStore,
   resave: true,
   saveUninitialized: true,
-  secret: 'sessionsecret',
+  secret: randomstring,
   cookie: {
     httpOnly: process.env.NODE_ENV === 'production',
     secure: process.env.NODE_ENV === 'production',

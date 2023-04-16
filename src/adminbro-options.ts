@@ -1,6 +1,6 @@
 import AdminJS, { Dashboard } from 'adminjs'
 import { ComponentLoader } from 'adminjs'
-import { Theme } from '@adminjs/design-system'
+
 import AdminJSMongoose, { Resource } from '@adminjs/mongoose'
 import bcrypt from 'bcrypt'
 import Users from './db/Users'
@@ -14,7 +14,7 @@ const beforeAction = (request, context) => {
 
     const newQuery = {
       ...query,
-      ['filters.game']: context.currentAdmin.game,
+      ['filters.placeid']: context.currentAdmin.placeid,
     }
 
     request.query = newQuery
@@ -42,18 +42,71 @@ const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.r
 const adminBroOptions = new AdminJS({
   resources: [
     {
+      resource: Users,
+      options: {
+        navigation: contentNavigation,
+        properties: {
+          email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
+          encryptedPassword: { isVisible: false, type: 'password' },
+          password: {
+            type: 'password',
+            isVisible: {
+              list: false, edit: true, filter: false, show: false
+            }
+          },
+          updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
+          createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
+        },
+        actions: {
+          list: {
+            isAccessible: canModifyUsers
+          },
+          new: {
+            before: async (request: any) => {
+              if (request.payload.password) {
+                request.payload = {
+                  ...request.payload,
+                  encryptedPassword: await bcrypt.hash(request.payload.password, 10),
+                  password: undefined
+                }
+              }
+              return request
+            },
+            isAccessible: canModifyUsers
+          },
+          edit: {
+            before: async (request: any) => {
+              if (request.payload.password) {
+                request.payload = {
+                  ...request.payload,
+                  encryptedPassword: await bcrypt.hash(request.payload.password, 10),
+                  password: undefined
+                }
+              }
+              return request
+            },
+            isAccessible: canModifyUsers
+          },
+          delete: { isAccessible: canModifyUsers }
+        }
+      }
+    },
+    {
       resource: Exploiter,
       options: {
         navigation: contentNavigation,
         properties: {
           _id: { isVisible: false },
           exploited: { isVisible: { list: true, filter: true, show: true, edit: true } },
-          createdAt: { isVisible: { list: true, filter: true, show: true, edit: true} }
+          createdAt: { isVisible: { list: true, filter: true, show: true, edit: true } }
         },
         actions: {
-          list: beforeAction 
-        
-        }}
+         list:{
+          before: beforeAction
+         }
+
+        }
+      }
     },
     {
       resource: Reports,
@@ -114,7 +167,7 @@ const adminBroOptions = new AdminJS({
       },
       labels: {
         loginWelcome: 'Aspect Systems',
-        Users: 'Users',
+        Users: 'Customers',
         Announce: 'Announcements',
         Email: 'Email',
         Exploiter: 'Users'
@@ -142,7 +195,7 @@ const adminBroOptions = new AdminJS({
   pages: {
     'Dashboard': {
       component: AdminJS.bundle('./components/my-dashboard-component'),
-      icon: 'Dashboard'
+      icon: 'Terminal'
     },
 
   },

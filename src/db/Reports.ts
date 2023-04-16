@@ -15,7 +15,7 @@ const reportSchema = new mongoose.Schema({
         type: 'string',
         required: true,
     },
-    game: {
+    placeid: {
         required: true,
         type: String,
 

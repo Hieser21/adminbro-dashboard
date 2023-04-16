@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
   },
   userid: { type: String },
   role:  { type: String, enum: ['Owner', 'Developer'], required: true },
-  game: { type: String, required: true}
+  placeid: { type: String, required: true}
 },
 
   {
