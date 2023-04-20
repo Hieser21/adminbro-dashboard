@@ -29,7 +29,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   store: sessionStore,
   resave: true,
   saveUninitialized: true,
-  secret: randomstring,
+  secret: 'sessionsecret',
   cookie: {
     httpOnly: process.env.NODE_ENV === 'production',
     secure: process.env.NODE_ENV === 'production',
@@ -43,7 +43,7 @@ app.use("/asset", express.static("public"))
 
 app.get('/', (req, res) => { res.redirect('/admin') })
 const run = async () => {
-  await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ehnrp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
+  await mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
