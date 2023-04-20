@@ -14,7 +14,7 @@ const sessionStore = MongoStore.create({
 })
 const cookie = process.env.COOKIE_PASSWORD
 const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
-  authenticate: async (email: any, password: any) => {
+  authenticate: async function(email: any, password: any){
     const user = await Users.findOne({ email })
     if (user) {
       const matched = await bcrypt.compare(password, user.encryptedPassword)
