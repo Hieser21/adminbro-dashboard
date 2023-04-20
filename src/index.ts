@@ -5,7 +5,6 @@ import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
 import { default as MongoStore} from 'connect-mongo'
-import * as randomstring from  'randomstring'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
@@ -43,7 +42,7 @@ app.use("/asset", express.static("public"))
 
 app.get('/', (req, res) => { res.redirect('/admin') })
 const run = async () => {
-  await mongoose.connect(process.env.MONGO_URI, {
+  await mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
