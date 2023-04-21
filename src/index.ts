@@ -4,7 +4,7 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import { default as MongoStore} from 'connect-mongo'
+import MongoStore from 'connect-mongo'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
@@ -12,6 +12,7 @@ const sessionStore = MongoStore.create({
   autoRemove: 'native'
 })
 const cookie = process.env.COOKIE_PASSWORD
+adminBroOptions.initialize()
 const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   authenticate: async function(email: any, password: any){
     const user = await Users.findOne({ email })
