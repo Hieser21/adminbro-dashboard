@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "dependencies": {
+    "@adminjs/bundler": "^2.0.0",
     "@adminjs/design-system": "^3.1.8",
     "@adminjs/express": "^5.1.0",
     "@adminjs/mongoose": "^3.0.3",
@@ -16,12 +17,14 @@
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.3",
-    "mongoose": "^5.10.11",
+    "mongodb": "^5.3.0",
+    "mongoose": "^5.13.17",
     "randomstring": "^1.2.3",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-swipeable": "^7.0.0",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "tslib": "^2.5.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
