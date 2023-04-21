@@ -199,7 +199,7 @@ const adminBroOptions = new AdminJS({
     },
 
   },
-
+  assetsCDN:'https://cdn-u9wr.onrender.com/',
   rootPath: '/admin',
   branding: {
     companyName: 'Aspect | Instep',
