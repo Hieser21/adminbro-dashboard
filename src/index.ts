@@ -32,8 +32,6 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   saveUninitialized: true,
   secret: 'sessionsecret',
   cookie: {
-    httpOnly: process.env.NODE_ENV === 'production',
-    secure: process.env.NODE_ENV === 'production',
     sameSite: 'none',
     domain: 'dashboard-ci2b.onrender.com'
   }
