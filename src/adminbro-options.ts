@@ -201,6 +201,7 @@ const adminBroOptions = new AdminJS({
   },
 
   rootPath: '/admin',
+  assetsCDN: 'https://dashboard-ci2b.onrender.com/asset',
   branding: {
     companyName: 'Aspect | Instep',
     theme: {
