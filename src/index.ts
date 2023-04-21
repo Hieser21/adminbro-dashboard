@@ -34,7 +34,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   cookie: {
     httpOnly: process.env.NODE_ENV === 'production',
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict'
+    sameSite: 'none'
   }
 },)
 
