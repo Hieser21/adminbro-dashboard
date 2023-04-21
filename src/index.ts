@@ -34,6 +34,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   cookie: {
     httpOnly: process.env.NODE_ENV === 'production',
     secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict'
   }
 },)
 
@@ -42,7 +43,7 @@ app.use(adminBroOptions.options.rootPath, router)
 app.use("/asset", express.static("public"))
 
 
-app.get('/', (req,res) => { res.redirect('/admin')});
+app.use('/', express.static("public"))
 const run = async () => {
   await mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
