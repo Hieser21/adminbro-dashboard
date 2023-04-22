@@ -100,11 +100,19 @@ const adminBroOptions = new AdminJS({
           exploited: { isVisible: { list: true, filter: true, show: true, edit: true } },
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: true } }
         },
-        actions: {
-         list:{
-          before: beforeAction
-         }
+       actions: {
+          list: {
+            before: beforeAction
+          },
+          new: {
 
+            isAccessible: canEditReports
+          },
+          edit: {
+            isAccessible: canEditReports
+
+          },
+          delete: { isAccessible: canModifyUsers }
         }
       }
     },
