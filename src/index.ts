@@ -8,7 +8,7 @@ import adminBroOptions from './adminbro-options'
 import {default as MongoStore} from 'connect-mongo'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
-  mongoUrl: 'mongodb+srv://Bot:rattlesnake20@cluster0.ehnrp.mongodb.net/mern?retryWrites=true&w=majority',
+  mongoUrl: `${process.env.MONGO_URI}`,
   ttl: 14 * 24 * 60 * 60,
   autoRemove: 'native'
 })
