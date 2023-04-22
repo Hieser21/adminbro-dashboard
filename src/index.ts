@@ -53,7 +53,9 @@ const run = async () => {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-  }).then(function(value){ console.log('Connection to DB successful!')})
+  }).then(function () {
+    console.log('DB connected')
+  })
 
   await app.listen(8080)
 }
