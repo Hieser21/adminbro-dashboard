@@ -59,5 +59,5 @@ const run = async () => {
 
   await app.listen(8080)
 }
-
+console.log(run())
 run()
