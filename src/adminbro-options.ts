@@ -199,7 +199,6 @@ const adminBroOptions = new AdminJS({
     },
 
   },
-  assetsCDN:'https://cdn-u9wr.onrender.com/',
   rootPath: '/admin',
   assetsCDN: 'https://cdn-u9wr.onrender.com/',
   branding: {
