@@ -48,7 +48,7 @@ app.use("/asset", express.static("public"))
 
 app.get('/', function(req, res) { res.redirect('/admin')})
 const run = async () => {
-  await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ehnrp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
+  await mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
