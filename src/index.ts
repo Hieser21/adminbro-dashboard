@@ -4,7 +4,6 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import { bundle } from '@adminjs/bundler'
 import {default as MongoStore} from 'connect-mongo'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
