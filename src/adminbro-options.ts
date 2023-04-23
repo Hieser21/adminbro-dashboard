@@ -216,7 +216,6 @@ const adminBroOptions = new AdminJS({
   },
 
   rootPath: '/admin',
-
   branding: {
     companyName: 'Aspect | Instep',
     theme: {
