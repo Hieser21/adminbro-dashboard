@@ -4,7 +4,6 @@ import Users from './db/Users'
 import mongoose from 'mongoose'
 import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options'
-import { bundle } from '@adminjs/bundler'
 import {default as MongoStore} from 'connect-mongo'
 require('dotenv').config()
 const sessionStore = MongoStore.create({
@@ -32,9 +31,8 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   saveUninitialized: true,
   secret: 'sessionsecret',
   cookie: {
-    secure: process.env.NODE_ENV == 'production',
-    sameSite: 'none',
-    domain: 'dashboard-ci2b.onrender.com'
+    httpOnly: process.env.NODE_ENV !== 'production',
+    secure: process.env.NODE_ENV !== 'production',
   }
 },)
 
@@ -43,7 +41,7 @@ app.use(adminBroOptions.options.rootPath, router)
 app.use("/asset", express.static("public"))
 
 
-app.get('/', (req, res) => { res.redirect('/admin')})
+app.get('/', function(req, res) { res.redirect('/admin')})
 const run = async () => {
   await mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
