@@ -173,6 +173,13 @@ const adminBroOptions = new AdminJS({
       messages: {
         loginWelcome: 'Providing Innovative Security'
       },
+      resources: {
+        Exploiter: {
+          properties: {
+            createdAt: 'Detected'
+          }
+        }
+      },
       labels: {
         loginWelcome: 'Aspect Systems',
         Users: 'Customers',

@@ -31,8 +31,8 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   saveUninitialized: true,
   secret: 'sessionsecret',
   cookie: {
-    httpOnly: process.env.NODE_ENV !== 'production',
-    secure: process.env.NODE_ENV !== 'production',
+    httpOnly:false,
+    secure: false,
   }
 },)
 
