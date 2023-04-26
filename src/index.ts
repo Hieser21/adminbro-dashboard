@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import express, {Express} from 'express'
 import bcrypt from 'bcrypt'
 import Users from './db/Users.js'
@@ -12,7 +14,7 @@ const sessionStore = MongoStore.create({
   ttl: 14 * 24 * 60 * 60,
   autoRemove: 'native'
 });
-
+adminBroOptions.initialize()
 const cookie = process.env.COOKIE_PASSWORD
 const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   authenticate: async function(email: any, password: any){

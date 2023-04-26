@@ -12,6 +12,7 @@ const sessionStore = MongoStore.create({
     ttl: 14 * 24 * 60 * 60,
     autoRemove: 'native'
 });
+adminBroOptions.initialize();
 const cookie = process.env.COOKIE_PASSWORD;
 const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
     authenticate: async function (email, password) {
