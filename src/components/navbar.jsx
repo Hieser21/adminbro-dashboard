@@ -1,14 +1,13 @@
 import { CurrentUserNav, Box} from '@adminjs/design-system'
 import { useCurrentAdmin } from 'adminjs'
 import {useSelector} from 'react-redux'
-import {Asleep16, Awake16} from '@carbon/icons-react'
-import styled from 'styled-components'
 let currentAdminUser;
 let toggler;
+
 const TopBar = (props) => {
   const [currentAdmin, setCurrentAdmin] = useCurrentAdmin()
   const { toggleSidebar } = props
-  toggler = toggleSidebar
+  toggler = toggleSidebar  
   const [session, paths, versions] = useSelector(
     (state) => [
       state.session,
@@ -28,7 +27,7 @@ const TopBar = (props) => {
       <CurrentUserNav
         dropActions={[
           {
-            icon: 'Logout',
+            icon: 'LogOut',
             label: 'Log out',
             href: '/admin/logout',
             onClick: function noRefCheck() { }
@@ -36,13 +35,13 @@ const TopBar = (props) => {
         ]}
         lineActions={[
           {
-            icon: 'Continue',
+            icon: 'ArrowRight',
             label: 'Sidebar',
             onClick: toggleSidebar,
             
           },
           {
-            icon: 'Help',
+            icon: 'AlertCircle',
             label: 'Help',
             href: 'https://discord.gg/FrxXABtE',
             onClick: function noRefCheck() { }
@@ -51,6 +50,7 @@ const TopBar = (props) => {
         ]}
         name={currentAdmin.name}
         title={currentAdmin.role}
+        avatarUrl={'/asset/files/' + currentAdmin.name + '/' + currentAdmin.role + '.png'}
       />
     </Box>
   )

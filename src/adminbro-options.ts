@@ -1,13 +1,21 @@
-import AdminJS, { Dashboard } from 'adminjs'
-import { ComponentLoader } from 'adminjs'
-
-import AdminJSMongoose, { Resource } from '@adminjs/mongoose'
+import AdminJS, { Dashboard, ThemeConfig } from 'adminjs'
+import { dark, light } from '@adminjs/themes'
+import * as AdminJSMongoose from '@adminjs/mongoose'
+import files from './components/files.js'
+import { componentLoader, Component } from './components/index.js'
 import bcrypt from 'bcrypt'
-import Users from './db/Users'
-import Reports from './db/Reports'
-import Announce from './db/Announce'
-import Exploiter from './db/Exploiter'
-const componentLoader = new ComponentLoader()
+import Users from './db/Users.js'
+import path from 'path'
+import uploadFeature from '@adminjs/upload'
+import Reports from './db/Reports.js'
+import Announce from './db/Announce.js'
+import Exploiter from './db/Exploiter.js'
+const credentials = {
+  bucket: 'public/files',
+  opts: {
+      baseUrl: '/asset/files'
+  }
+}
 const beforeAction = (request, context) => {
   if (context.currentAdmin.role !== 'Developer') {
     const { query = {} } = request
@@ -25,14 +33,10 @@ const beforeAction = (request, context) => {
     return request
   }
 }
-const Component = {
-  Dashboard: AdminJS.bundle('./components/my-dashboard-component'),
-  TopBar: AdminJS.bundle('./components/navbar', 'TopBar')
-};
 AdminJS.registerAdapter(AdminJSMongoose)
 const contentNavigation = {
   name: 'Logs',
-  icon: 'Dashboard'
+  icon: 'Activity'
 }
 const canModifyUsers = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
 const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
@@ -45,6 +49,7 @@ const adminBroOptions = new AdminJS({
       resource: Users,
       options: {
         navigation: contentNavigation,
+        listProperties: ['name', 'photo', 'email', ],
         properties: {
           email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
           encryptedPassword: { isVisible: false, type: 'password' },
@@ -54,6 +59,7 @@ const adminBroOptions = new AdminJS({
               list: false, edit: true, filter: false, show: false
             }
           },
+          
           updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
         },
@@ -89,7 +95,19 @@ const adminBroOptions = new AdminJS({
           },
           delete: { isAccessible: canModifyUsers }
         }
-      }
+      },
+      features: [uploadFeature({
+        componentLoader,
+        provider: { local: credentials },
+        validation: { mimeTypes: [ 'image/png']},
+
+        properties: {
+          filename: 'photoname',
+          file: 'photo',
+          key: 'avatar',
+        },
+        uploadPath: (record, filename) => `${record.params.name}/${record.params.role}` + '.' + `${filename.split('.')[1]}`,
+      })]
     },
     {
       resource: Exploiter,
@@ -100,7 +118,7 @@ const adminBroOptions = new AdminJS({
           exploited: { isVisible: { list: true, filter: true, show: true, edit: true } },
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: true } }
         },
-       actions: {
+        actions: {
           list: {
             before: beforeAction
           },
@@ -163,16 +181,21 @@ const adminBroOptions = new AdminJS({
       }
     }
   ],
-
+  componentLoader,
   locale: {
     language: 'en',
     translations: {
-      properties: {
-        password: 'Pass'
-      },
-      messages: {
-        loginWelcome: 'Providing Innovative Security'
-      },
+      en:{
+      components: {
+          Login: {
+            welcomeHeader: "Aspect",
+            welcomeMessage: "Providing Innovative Security",
+            email: "Email",
+            password: "Password"
+            ,
+          }
+      }
+      ,
       resources: {
         Exploiter: {
           properties: {
@@ -181,13 +204,13 @@ const adminBroOptions = new AdminJS({
         }
       },
       labels: {
-        loginWelcome: 'Aspect Systems',
-        Users: 'Customers',
+       Users: 'Customers',
         Announce: 'Announcements',
         Email: 'Email',
         Exploiter: 'Users'
       }
     }
+  }
   },
   dashboard: {
     handler: async (request, response, context) => {
@@ -209,14 +232,13 @@ const adminBroOptions = new AdminJS({
   },
   pages: {
     'Dashboard': {
-      component: AdminJS.bundle('./components/my-dashboard-component'),
+      component: Component.Dashboard,
       icon: 'Terminal'
     },
 
   },
 
   rootPath: '/admin',
-
   branding: {
     companyName: 'Aspect | Instep',
     theme: {

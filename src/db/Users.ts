@@ -1,5 +1,13 @@
 import mongoose from 'mongoose'
 
+export interface IFile {
+  id: number;
+  s3Key: string;
+  bucket: string;
+  mime: string;
+  comment: string | null;
+}
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -27,8 +35,12 @@ const UserSchema = new mongoose.Schema({
   },
   userid: { type: String },
   role:  { type: String, enum: ['Owner', 'Developer'], required: true },
-  placeid: { type: String, required: true}
-},
+  placeid: { type: String, required: true},
+  theme: {type: String, required: true},
+  photoname: {type: String},
+  avatar: {type: String, required: true},
+}
+,
 
   {
     timestamps: true

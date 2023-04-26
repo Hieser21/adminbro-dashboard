@@ -1,6 +1,6 @@
 import { Box, Placeholder, Badge } from '@adminjs/design-system'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import {styled} from '@adminjs/design-system/styled-components'
 import { ApiClient, useNotice } from 'adminjs';
 import { useSwipeable } from 'react-swipeable'
 import { toggler } from './navbar'
@@ -8,7 +8,6 @@ const api = new ApiClient();
 
 
 const Dashboard = () => {
-  const [text, setText] = useState('');
   const [subscription, setSubscription] = useState('');
   const [stat, setStat] = useState('');
   const [logs, setLogs] = useState('')
@@ -29,7 +28,6 @@ const Dashboard = () => {
   }
   useEffect(() => {
     api.getDashboard().then((res) => {
-      setText(res.data.text);
       setSubscription(res.data.subscription_type.subscription);
       setStat(res.data.stat.isActive);
       setLogs(res.data.logs);
@@ -45,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <div {...handlers}>
-      <Box variant="white" className='height'>
+      <Box color="white" className='height'>
         <Card variant="white" className="angry-grid">
           <div id="item-0">
             <div className="card">
@@ -75,7 +73,7 @@ const Dashboard = () => {
             <div className='card'>
               <div className="card-details">
                 <p className="text-title">Announcements</p>
-                <div className="text-body">{ping?.length ? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div>
+                <div className="text-body">{ping?.length ? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No announcements</Badge>}</div>
               </div>
             </div>
           </div>
@@ -92,7 +90,7 @@ const Dashboard = () => {
             <div className='card daily'>
               <div className="card-details">
                 <p className="text-title">Daily</p>
-                <div className="text-body">{logs?.length ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div>
+                <div className="text-body">{logs?.length ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No logs</Badge>}</div>
               </div>
             </div>
           </div>

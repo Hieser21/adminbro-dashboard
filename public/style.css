@@ -270,7 +270,7 @@ section[data-css="sidebar-resources"] {
 }
 
 @media (min-width: 1326px) {
-  a[title="Sidebar"] span{
+  a[title="Sidebar"]{
     display:none !important;
     visibility:hidden !important;
   }
