@@ -38,7 +38,8 @@ const UserSchema = new mongoose.Schema({
   placeid: { type: String, required: true},
   theme: {type: String, required: true},
   photoname: {type: String},
-  avatar: {type: String, required: true},
+  mime: {type: String},
+  avatar: {type: String},
 }
 ,
 

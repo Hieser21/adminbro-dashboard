@@ -1,13 +1,15 @@
 import { Box, Placeholder, Badge } from '@adminjs/design-system'
 import React, { useEffect, useState } from 'react'
 import {styled} from '@adminjs/design-system/styled-components'
-import { ApiClient, useNotice } from 'adminjs';
+import { ApiClient, useCurrentAdmin, useNotice } from 'adminjs';
 import { useSwipeable } from 'react-swipeable'
 import { toggler } from './navbar'
 const api = new ApiClient();
 
 
 const Dashboard = () => {
+  const [currentAdmin, setCurrentAdmin] = useCurrentAdmin()
+  const [text, setText] = useState('');
   const [subscription, setSubscription] = useState('');
   const [stat, setStat] = useState('');
   const [logs, setLogs] = useState('')
@@ -28,6 +30,7 @@ const Dashboard = () => {
   }
   useEffect(() => {
     api.getDashboard().then((res) => {
+      setText(res.data.text);
       setSubscription(res.data.subscription_type.subscription);
       setStat(res.data.stat.isActive);
       setLogs(res.data.logs);
@@ -42,11 +45,11 @@ const Dashboard = () => {
 
 
   return (
-    <div {...handlers}>
-      <Box color="white" className='height'>
-        <Card variant="white" className="angry-grid">
+    <div {...handlers} style={{backgroundColor: '#1e1e1e'}}>
+      <Box color={currentAdmin.theme == 'dark' ? '':"white"} className='height' style={currentAdmin.theme == 'dark' ? {backgroundColor:'#281A4F'}: {backgroundColor: 'white'}}>
+        <Card color={currentAdmin.theme == 'dark' ? '':"white"} style={currentAdmin.theme == 'dark' ? {marginLeft: '10px', paddingTop: '10px'}:{marginLeft: '10px', paddingTop: '10px'}} className="angry-grid">
           <div id="item-0">
-            <div className="card">
+            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Username</p>
                 <div className="text-body">{user?.length ? <pre>{user}</pre> : <Placeholder style={{ width: 100, height: 14 }} />}</div>
@@ -54,7 +57,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-1">
-            <div className="card">
+            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Subscription</p>
                 <div className="text-body">{subscription?.length ? <pre>{subscription}</pre> : <Placeholder style={{ width: 100, height: 14 }} />}</div>
@@ -62,7 +65,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-2">
-            <div className="card">
+            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Status</p>
                 <div className="text-body">{stat == 'Active' ? <pre><Badge variant="success">Active</Badge></pre> : <Badge variant="danger">Offline</Badge>}</div>
@@ -70,15 +73,15 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-3">
-            <div className='card'>
+            <div className='card' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Announcements</p>
-                <div className="text-body">{ping?.length ? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No announcements</Badge>}</div>
+                <div className="text-body">{ping?.length ? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Announcements</Badge>}</div>
               </div>
             </div>
           </div>
           <div id="item-4">
-            <div className='card'>
+            <div className='card' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Anti Exploit</p>
                 <p className='text-body'>Lorem ipsum sit dolor amet lorem ipsum</p>
@@ -87,10 +90,10 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-5">
-            <div className='card daily'>
+            <div className='card daily' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Daily</p>
-                <div className="text-body">{logs?.length ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No logs</Badge>}</div>
+                <div className="text-body">{logs?.length ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Logs</Badge>}</div>
               </div>
             </div>
           </div>
@@ -98,7 +101,7 @@ const Dashboard = () => {
 
 
       </Box>
-      <footer className='footer-content'>
+      <footer className='footer-content' style={currentAdmin.theme == 'dark' ? {backgroundColor: '#281A4F', color: 'white'}: { backgroundColor: 'white', color: '#0d1318'}}>
         <div>Aspect Systems | All rights reserved.</div></footer>
     </div>
   )

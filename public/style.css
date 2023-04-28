@@ -1,17 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 .card {
   border-radius: 20px;
-  background: #F7F7F7;
-  color: #0d1318;
   position: relative;
   padding: 16px;
   text-align: center;
-  border: 2px solid #c3c6ce;
   overflow: visible;
 }
 
 .card-details {
-  color: black;
   height: 100%;
   gap: .5em;
   display: grid;
@@ -39,9 +35,7 @@
   transition: 0.3s ease-out;
 }
 
-.text-body {
-  color: rgb(134, 134, 134);
-}
+
 
 /*Text*/
 .text-title {
@@ -84,7 +78,6 @@
   text-align: right !important;
   width: 100% !important;
   box-sizing: content-box;
-  background-color: #fff !important;
 }
  .footer-content div {
   font-weight: 500;
@@ -171,7 +164,9 @@
   grid-row-end: 4;
   grid-column-end: 5;
 }
-
+.bg-black {
+  background-color: black !important;
+}
 
 @media (max-width: 767px){
   .angry-grid {
@@ -233,12 +228,10 @@
 
 :root {
   --topbar-color: #F7F7F7;
-  --sidebar-bg-color: #F7F7F7;
   --sidebar-color: #6844ce;
   --sidebar-link-color:rgb(15, 13, 13);
 }
 .topbar {
-  background-color: var(--topbar-color) !important;
 }
 
 section[data-css="sidebar"] {
@@ -253,15 +246,15 @@ section[data-css="sidebar"] svg {
 }
 
 a[data-css="sidebar-logo"] {
-  background-color: var(--sidebar-bg-color) !important;
+  background-color: #F7F7F7 !important;
+  width: 24 !important;
+  height: 24 !important;
 }
 
 section[data-css="sidebar-resources"] {
-  background: var(--sidebar-bg-color) !important;
 }
 
 [data-css="sidebar"] section a {
-  background: var(--sidebar-bg-color) !important;
   color: var(--sidebar-color);
 }
 

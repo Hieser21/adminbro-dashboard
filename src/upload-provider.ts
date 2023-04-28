@@ -6,10 +6,10 @@ import { BaseProvider } from "@adminjs/upload";
 const UPLOADS_DIR = 'public/files';
 
 export default class UploadProvider extends BaseProvider {
-  constructor() {
-    super(UPLOADS_DIR);
-    if (!existsSync(UPLOADS_DIR)) {
-      throw new Error(`directory: "${UPLOADS_DIR}" does not exists. Create it before running LocalAdapter`);
+  constructor(options) {
+    super(options.bucket, options?.opts);
+    if (!existsSync(options.bucket)) {
+      throw new Error(`directory: "${options.bucket}" does not exists. Create it before running LocalAdapter`);
     }
   }
 

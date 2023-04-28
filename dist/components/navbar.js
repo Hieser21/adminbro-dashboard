@@ -13,7 +13,7 @@ const TopBar = (props) => {
         state.versions,
     ]);
     currentAdminUser = currentAdmin;
-    return (React.createElement(Box, { border: '0px', flex: true, flexDirection: 'row-reverse', height: 'navbarHeight', className: 'topbar' },
+    return (React.createElement(Box, { border: '0px', flex: true, flexDirection: 'row-reverse', height: 'navbarHeight', style: currentAdmin.theme == 'dark' ? { backgroundColor: '#281A4F', color: 'white', border: '2px solid black' } : { backgroundColor: 'white', color: '#0d1318' } },
         React.createElement(CurrentUserNav, { dropActions: [
                 {
                     icon: 'LogOut',

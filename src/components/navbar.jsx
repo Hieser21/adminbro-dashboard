@@ -22,7 +22,7 @@ const TopBar = (props) => {
     flex
     flexDirection='row-reverse'
     height='navbarHeight'
-    className='topbar'
+    style={currentAdmin.theme == 'dark' ? {backgroundColor:'#281A4F', color: 'white', border: '2px solid black'}: {backgroundColor:'white', color: '#0d1318'}}
     >
       <CurrentUserNav
         dropActions={[

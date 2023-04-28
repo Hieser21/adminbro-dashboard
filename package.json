@@ -50,8 +50,7 @@
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "start": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/index.ts",
-    "dev": "nodemon --exec node --loader ts-node/esm src/index.ts"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
