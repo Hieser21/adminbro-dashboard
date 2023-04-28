@@ -130,7 +130,7 @@ const adminBroOptions = new AdminJS({
                             baseUrl: '/asset/files',
                         }
                     }),
-                    validation: { mimeTypes: ['image/png', 'image/jpg', 'image/jpeg'] },
+                    validation: { mimeTypes: ['image/png'] },
                     properties: {
                         filename: 'photoname',
                         file: 'photo',
@@ -138,7 +138,7 @@ const adminBroOptions = new AdminJS({
                         key: 'avatar',
                         mimeType: 'mime'
                     },
-                    uploadPath: (record, filename) => `${record.params.name}/${record.params.role}` + '.' + `${filename.split('.')[1]}`,
+                    uploadPath: (record, filename) => `${record.params.name}/${record.params.role}.png`,
                 })]
         },
         {
