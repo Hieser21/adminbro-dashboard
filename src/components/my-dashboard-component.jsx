@@ -49,7 +49,7 @@ const Dashboard = () => {
       <Box color={currentAdmin.theme == 'dark' ? '':"white"} className='height' style={currentAdmin.theme == 'dark' ? {backgroundColor:'#281A4F'}: {backgroundColor: 'white'}}>
         <Card color={currentAdmin.theme == 'dark' ? '':"white"} style={currentAdmin.theme == 'dark' ? {marginLeft: '10px', paddingTop: '10px'}:{marginLeft: '10px', paddingTop: '10px'}} className="angry-grid">
           <div id="item-0">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {color: '#0d1318'}}>
               <div className="card-details">
                 <p className="text-title">Username</p>
                 <hr style={{width: '100%'}}/>
@@ -58,7 +58,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-1">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : { color: '#0d1318'}}>
               <div className="card-details">
                 <p className="text-title">Subscription</p>
                 <hr style={{width: '100%'}}/>
@@ -67,7 +67,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-2">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : { color: '#0d1318'}}>
               <div className="card-details">
                 <p className="text-title">Status</p>
                 <hr style={{width: '100%'}}/>
