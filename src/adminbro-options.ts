@@ -133,10 +133,7 @@ const adminBroOptions = new AdminJS({
       features: [uploadFeature({
         componentLoader,
         provider: new UploadProvider({
-          bucket: 'public/files',
-          opts: {
-            baseUrl: '/asset/files',
-          }
+          bucket: 'dashboard-d7e5d.appspot.com'
         }),
         validation: { mimeTypes: ['image/png', 'image/jpeg', 'image/jpg'] },
 

@@ -15,6 +15,7 @@ const TopBar = (props) => {
       state.versions,
     ],
   )
+  const filePath = `${currentAdmin.name}%2F${currentAdmin.role}.png`
   currentAdminUser = currentAdmin
   return (
     <Box
@@ -50,7 +51,7 @@ const TopBar = (props) => {
         ]}
         name={currentAdmin.name}
         title={currentAdmin.role}
-        avatarUrl={'/asset/files/' + currentAdmin.name + '/' + currentAdmin.role + '.png'}
+        avatarUrl={`https://firebasestorage.googleapis.com/v0/b/dashboard-d7e5d.appspot.com/o/${filePath}?alt=media`}
       />
     </Box>
   )

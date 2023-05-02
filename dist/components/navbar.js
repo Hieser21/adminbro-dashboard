@@ -12,6 +12,7 @@ const TopBar = (props) => {
         state.paths,
         state.versions,
     ]);
+    const filePath = `${currentAdmin.name}%2F${currentAdmin.role}.png`;
     currentAdminUser = currentAdmin;
     return (React.createElement(Box, { border: '0px', flex: true, flexDirection: 'row-reverse', height: 'navbarHeight', style: currentAdmin.theme == 'dark' ? { backgroundColor: '#281A4F', color: 'white', border: '2px solid black' } : { backgroundColor: 'white', color: '#0d1318' } },
         React.createElement(CurrentUserNav, { dropActions: [
@@ -33,7 +34,7 @@ const TopBar = (props) => {
                     href: 'https://discord.gg/FrxXABtE',
                     onClick: function noRefCheck() { }
                 },
-            ], name: currentAdmin.name, title: currentAdmin.role, avatarUrl: '/asset/files/' + currentAdmin.name + '/' + currentAdmin.role + '.png' })));
+            ], name: currentAdmin.name, title: currentAdmin.role, avatarUrl: `https://firebasestorage.googleapis.com/v0/b/dashboard-d7e5d.appspot.com/o/${filePath}?alt=media` })));
 };
 export { currentAdminUser, toggler };
 export default TopBar;

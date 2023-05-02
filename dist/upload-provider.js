@@ -1,26 +1,32 @@
-import fs, { existsSync } from "fs";
-import { move } from "fs-extra";
-import path from "path";
+import admin from 'firebase-admin';
 import { BaseProvider } from "@adminjs/upload";
-const UPLOADS_DIR = 'public/files';
+import { getStorage } from "firebase-admin/storage";
+const app = admin.initializeApp({
+    credential: admin.credential.cert('src/dashboard-d7e5d-firebase-adminsdk-s4c4m-a9d8cc39c7.json'),
+    projectId: "dashboard-d7e5d",
+    storageBucket: "dashboard-d7e5d.appspot.com",
+});
+const storage = getStorage(app);
 export default class UploadProvider extends BaseProvider {
+    storage;
     constructor(options) {
-        super(options.bucket, options?.opts);
-        if (!existsSync(options.bucket)) {
-            throw new Error(`directory: "${options.bucket}" does not exists. Create it before running LocalAdapter`);
-        }
+        super(options.bucket);
     }
     async upload(file, key) {
-        const filePath = process.platform === "win32" ? this.path(key) : this.path(key).slice(1);
-        await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
-        await move(file.path, filePath, { overwrite: true });
+        return storage.bucket(this.bucket).upload(file.path, {
+            gzip: true,
+            destination: key
+        });
     }
     async delete(key, bucket) {
-        await fs.promises.unlink(process.platform === "win32" ? this.path(key, bucket) : this.path(key, bucket).slice(1));
+        const bucketStore = storage.bucket(bucket);
+        const file = bucketStore.file(key);
+        return file.delete();
     }
-    path(key, bucket) {
-        return process.platform === "win32"
-            ? `${path.join(bucket || this.bucket, key)}`
-            : `/${path.join(bucket || this.bucket, key)}`;
+    async path(key, bucket) {
+        const bucketStore = storage.bucket(bucket);
+        const file = bucketStore.file(key);
+        let filePath = key.split('/').join('%2F');
+        return `https://firebasestorage.googleapis.com/v0/b/${this.bucket}/o/${filePath}?alt=media`;
     }
 }

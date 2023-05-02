@@ -49,25 +49,28 @@ const Dashboard = () => {
       <Box color={currentAdmin.theme == 'dark' ? '':"white"} className='height' style={currentAdmin.theme == 'dark' ? {backgroundColor:'#281A4F'}: {backgroundColor: 'white'}}>
         <Card color={currentAdmin.theme == 'dark' ? '':"white"} style={currentAdmin.theme == 'dark' ? {marginLeft: '10px', paddingTop: '10px'}:{marginLeft: '10px', paddingTop: '10px'}} className="angry-grid">
           <div id="item-0">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Username</p>
+                <hr style={{width: '100%'}}/>
                 <div className="text-body">{user?.length ? <pre>{user}</pre> : <Placeholder style={{ width: 100, height: 14 }} />}</div>
               </div>
             </div>
           </div>
           <div id="item-1">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Subscription</p>
+                <hr style={{width: '100%'}}/>
                 <div className="text-body">{subscription?.length ? <pre>{subscription}</pre> : <Placeholder style={{ width: 100, height: 14 }} />}</div>
               </div>
             </div>
           </div>
           <div id="item-2">
-            <div className="card" style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className="card" style={currentAdmin.theme == 'dark' ? {color: 'white', } : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Status</p>
+                <hr style={{width: '100%'}}/>
                 <div className="text-body">{stat == 'Active' ? <pre><Badge variant="success">Active</Badge></pre> : <Badge variant="danger">Offline</Badge>}</div>
               </div>
             </div>
@@ -80,19 +83,10 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div id="item-4">
-            <div className='card' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
-              <div className="card-details">
-                <p className="text-title">Anti Exploit</p>
-                <p className='text-body'>Lorem ipsum sit dolor amet lorem ipsum</p>
-                {/* <div className="text-body">{ping?.length? <pre><p>{ping[0].announcement} at {ping[0].createdAt}</p><p>{ping[1].announcement} at {ping[1].createdAt}</p><p>{ping[2].announcement} at {ping[2].createdAt}</p></pre> : <Badge variant="danger">Nothing</Badge>}</div> */}
-              </div>
-            </div>
-          </div>
           <div id="item-5">
             <div className='card daily' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
-              <div className="card-details">
-                <p className="text-title">Daily</p>
+              <p className="text-title" style={{textAlign: 'center'}}>Daily</p>
+              <div className="card-details" style={{placeContent: 'normal', paddingTop: '10px'}}>
                 <div className="text-body">{logs?.length ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Logs</Badge>}</div>
               </div>
             </div>
