@@ -26,7 +26,7 @@ const slateTheme = {
       border: '#39383d',
       text: '#fff',
       container: '#1A1A1E',
-      sidebar: '#281A4F',
+      sidebar: '#000000',
       grey100: '#CDCBD4',
       grey60: '#8C8B90',
       grey40: '#151419',
