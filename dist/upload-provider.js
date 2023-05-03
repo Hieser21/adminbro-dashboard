@@ -2,7 +2,7 @@ import admin from 'firebase-admin';
 import { BaseProvider } from "@adminjs/upload";
 import { getStorage } from "firebase-admin/storage";
 const app = admin.initializeApp({
-    credential: admin.credential.cert('src/dashboard-d7e5d-firebase-adminsdk-s4c4m-a9d8cc39c7.json'),
+    credential: admin.credential.cert('./dashboard-d7e5d-firebase-adminsdk-s4c4m-a9d8cc39c7.json'),
     projectId: "dashboard-d7e5d",
     storageBucket: "dashboard-d7e5d.appspot.com",
 });

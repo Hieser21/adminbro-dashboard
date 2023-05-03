@@ -76,7 +76,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="item-3">
-            <div className='card' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
+            <div className='card daily' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <div className="card-details">
                 <p className="text-title">Announcements</p>
                 <div className="text-body">{ping?.length ? <pre><p>{ping[0].announcement} at {ping[0].createdAt.split('T')[0]}</p><p>{ping[1].announcement} at {ping[1].createdAt.split('T')[0]}</p><p>{ping[2].announcement} at {ping[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Announcements</Badge>}</div>
