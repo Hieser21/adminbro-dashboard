@@ -100,7 +100,7 @@ const Dashboard = () => {
             <div className='card daily' style={currentAdmin.theme == 'dark' ? {background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce'} : {background:'#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce'}}>
               <p className="text-title" style={{textAlign: 'center'}}>Daily</p>
               <div className="card-details" style={{placeContent: 'normal', paddingTop: '10px'}}>
-                <div className="text-body">{logs[2]?.createdAt == today ? <pre><p>{logs[0].description} at {logs[0].createdAt.split('T')[0]}</p><p>{logs[1].description} at {logs[1].createdAt.split('T')[0]}</p><p>{logs[2].description} at {logs[2].createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Logs</Badge>}</div>
+                <div className="text-body">{logs[0]?.createdAt == today ? <pre><p>{logs[0]?.description} at {logs[0]?.createdAt.split('T')[0]}</p><p>{logs[1]?.description} at {logs[1]?.createdAt.split('T')[0]}</p><p>{logs[2]?.description} at {logs[2]?.createdAt.split('T')[0]}</p></pre> : <Badge variant="danger">No Logs</Badge>}</div>
               </div>
             </div>
           </div>
