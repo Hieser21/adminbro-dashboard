@@ -257,9 +257,9 @@ const adminBroOptions = new AdminJS({
       let res;
       res = await Reports.find().sort({ createdAt: -1 }).limit(3)
       let announce = await Announce.find().sort({ createdAt: -1 }).limit(3)
-      let status = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
-      let subscription_type = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
-      let user = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
+      let status = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
+      let subscription_type = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
+      let user = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
       return {
         stat: status,
         logs: res,
