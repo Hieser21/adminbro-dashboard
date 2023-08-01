@@ -25,7 +25,7 @@ const slateTheme = {
             border: '#39383d',
             text: '#fff',
             container: '#1A1A1E',
-            sidebar: '#281A4F',
+            sidebar: '#000000',
             grey100: '#CDCBD4',
             grey60: '#8C8B90',
             grey40: '#151419',
@@ -241,9 +241,9 @@ const adminBroOptions = new AdminJS({
             let res;
             res = await Reports.find().sort({ createdAt: -1 }).limit(3);
             let announce = await Announce.find().sort({ createdAt: -1 }).limit(3);
-            let status = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj; });
-            let subscription_type = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj; });
-            let user = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj; });
+            let status = await Users.findOne({ email: context.currentAdmin?.email });
+            let subscription_type = await Users.findOne({ email: context.currentAdmin?.email });
+            let user = await Users.findOne({ email: context.currentAdmin?.email });
             return {
                 stat: status,
                 logs: res,

@@ -36,6 +36,17 @@ const Dashboard = () => {
     const Card = styled(Box) `
   height: 100%;
   `;
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = `0${dd}`;
+    }
+    if (mm < 10) {
+        mm = `0${mm}`;
+    }
+    today = `${yyyy}-${mm}-${dd}`;
     return (React.createElement("div", { ...handlers, style: { backgroundColor: '#1e1e1e' } },
         React.createElement(Box, { color: currentAdmin.theme == 'dark' ? '' : "white", className: 'height', style: currentAdmin.theme == 'dark' ? { backgroundColor: '#281A4F' } : { backgroundColor: 'white' } },
             React.createElement(Card, { color: currentAdmin.theme == 'dark' ? '' : "white", style: currentAdmin.theme == 'dark' ? { marginLeft: '10px', paddingTop: '10px' } : { marginLeft: '10px', paddingTop: '10px' }, className: "angry-grid" },
@@ -59,7 +70,7 @@ const Dashboard = () => {
                             React.createElement("div", { className: "text-body" }, stat == 'Active' ? React.createElement("pre", null,
                                 React.createElement(Badge, { variant: "success" }, "Active")) : React.createElement(Badge, { variant: "danger" }, "Offline"))))),
                 React.createElement("div", { id: "item-3" },
-                    React.createElement("div", { className: 'card', style: currentAdmin.theme == 'dark' ? { background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce' } : { background: '#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce' } },
+                    React.createElement("div", { className: 'card daily', style: currentAdmin.theme == 'dark' ? { background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce' } : { background: '#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce' } },
                         React.createElement("div", { className: "card-details" },
                             React.createElement("p", { className: "text-title" }, "Announcements"),
                             React.createElement("div", { className: "text-body" }, ping?.length ? React.createElement("pre", null,
@@ -79,19 +90,25 @@ const Dashboard = () => {
                     React.createElement("div", { className: 'card daily', style: currentAdmin.theme == 'dark' ? { background: '#1e1e1e', color: 'white', border: '0px solid #c3c6ce' } : { background: '#f7f7f7', color: '#0d1318', border: '2px solid #c3c6ce' } },
                         React.createElement("p", { className: "text-title", style: { textAlign: 'center' } }, "Daily"),
                         React.createElement("div", { className: "card-details", style: { placeContent: 'normal', paddingTop: '10px' } },
-                            React.createElement("div", { className: "text-body" }, logs?.length ? React.createElement("pre", null,
+                            React.createElement("div", { className: "text-body" }, logs[0]?.createdAt.split('T')[0] == today ? React.createElement("pre", null,
                                 React.createElement("p", null,
-                                    logs[0].description,
-                                    " at ",
-                                    logs[0].createdAt.split('T')[0]),
+                                    logs[0]?.createdAt.split('T')[0] == today ? logs[0]?.description : '',
+                                    " ",
+                                    logs[0]?.createdAt.split('T')[0] == today ? "at" : '',
+                                    " ",
+                                    logs[0]?.createdAt.split('T')[0] == today ? logs[0]?.createdAt.split('T')[0] : ''),
                                 React.createElement("p", null,
-                                    logs[1].description,
-                                    " at ",
-                                    logs[1].createdAt.split('T')[0]),
+                                    logs[1]?.createdAt.split('T')[0] == today ? logs[1]?.description : '',
+                                    " ",
+                                    logs[1]?.createdAt.split("T")[0] == today ? "at" : "",
+                                    " ",
+                                    logs[1]?.createdAt.split('T')[0] == today ? logs[1]?.createdAt.split('T')[0] : ''),
                                 React.createElement("p", null,
-                                    logs[2].description,
-                                    " at ",
-                                    logs[2].createdAt.split('T')[0])) : React.createElement(Badge, { variant: "danger" }, "No Logs"))))))),
+                                    logs[2]?.createdAt.split('T')[0] == today ? logs[2]?.description : '',
+                                    "  ",
+                                    logs[2]?.createdAt.split("T")[0] == today ? "at" : "",
+                                    " ",
+                                    logs[2]?.createdAt.split('T')[0] == today ? logs[2]?.createdAt.split('T')[0] : '')) : React.createElement(Badge, { variant: "danger" }, "No Logs"))))))),
         React.createElement("footer", { className: 'footer-content', style: currentAdmin.theme == 'dark' ? { backgroundColor: '#281A4F', color: 'white' } : { backgroundColor: 'white', color: '#0d1318' } },
             React.createElement("div", null, "Aspect Systems | All rights reserved."))));
 };

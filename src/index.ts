@@ -7,6 +7,7 @@ import AdminJSExpress from '@adminjs/express'
 import adminBroOptions from './adminbro-options.js'
 import {default as MongoStore} from 'connect-mongo'
 import dotenv from 'dotenv'
+import argon2 from 'argon2'
 dotenv.config()
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
@@ -16,9 +17,10 @@ const sessionStore = MongoStore.create({
 const cookie = process.env.COOKIE_PASSWORD
 const router = AdminJSExpress.buildAuthenticatedRouter(adminBroOptions, {
   authenticate: async function(email: any, password: any){
-    const user = await Users.findOne({ email })
+    const user = await Users.findOne({ email: email })
+    console.log(user)
     if (user) {
-      const matched = await bcrypt.compare(password, user.encryptedPassword)
+      const matched = await argon2.verify(user.encryptedPassword, password)
       if (matched) {
         return user
       }
@@ -46,8 +48,6 @@ const run = async () => {
   await mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
   }).then(function () {
     console.log('DB connected')
   })
