@@ -1,3 +1,5 @@
+//The Core of the whole dashboard
+
 import AdminJS, { Dashboard, ThemeConfig } from 'adminjs'
 import { dark, light } from '@adminjs/themes'
 import * as AdminJSMongoose from '@adminjs/mongoose'
@@ -78,6 +80,7 @@ const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.r
 
 
 const adminBroOptions = new AdminJS({
+  //resources is the sidebar options for the DB CRUD GUI
   resources: [
     {
       resource: Users,
@@ -243,6 +246,7 @@ const adminBroOptions = new AdminJS({
             }
           }
         },
+        //For Translations, Text Edits and so on
         labels: {
           Users: 'Customers',
           Announce: 'Announcements',
@@ -252,6 +256,7 @@ const adminBroOptions = new AdminJS({
       }
     }
   },
+  //Custom component handler
   dashboard: {
     handler: async (request, response, context) => {
       let res;
