@@ -1,13 +1,57 @@
-import AdminJS, { Dashboard } from 'adminjs'
-import { ComponentLoader } from 'adminjs'
+//The Core of the whole dashboard
 
-import AdminJSMongoose, { Resource } from '@adminjs/mongoose'
+import AdminJS, { Dashboard, ThemeConfig } from 'adminjs'
+import { dark, light } from '@adminjs/themes'
+import * as AdminJSMongoose from '@adminjs/mongoose'
+import { componentLoader, Component } from './components/index.js'
 import bcrypt from 'bcrypt'
-import Users from './db/Users'
-import Reports from './db/Reports'
-import Announce from './db/Announce'
-import Exploiter from './db/Exploiter'
-const componentLoader = new ComponentLoader()
+import Users from './db/Users.js'
+import path from 'path'
+import uploadFeature from '@adminjs/upload'
+import Reports from './db/Reports.js'
+import Announce from './db/Announce.js'
+import Exploiter from './db/Exploiter.js'
+import UploadProvider from './upload-provider.js'
+const credentials = {
+  bucket: 'public/files',
+  opts: {
+    baseUrl: '/asset/files'
+  }
+}
+const slateTheme = {
+  id: 'dark',
+  name: 'Custom Dark',
+  overrides: {
+    colors: {
+      primary100: '#6844CE',
+      bg: '#281A4F',
+      border: '#39383d',
+      text: '#fff',
+      container: '#1A1A1E',
+      sidebar: '#000000',
+      grey100: '#CDCBD4',
+      grey60: '#8C8B90',
+      grey40: '#151419',
+      hoverBg: '#4F339C',
+      filterBg: '#1A1A1E',
+      inputBorder: 'rgba(145, 158, 171, 0.32)',
+      errorLight: '#C20012',
+      successLight: '#007D7F',
+      warningLight: '#A14F17',
+      infoLight: '#3040D6'
+    },
+    borders: {
+      default: '1px solid #232228',
+      input: '1px solid #232228'
+    },
+    shadows: {
+      login: '0 15px 24px 0 rgba(0, 0, 0, 0.3)',
+      cardHover: '0 4px 12px 0 rgba(0, 0, 0, 0.3)',
+      drawer: '-2px 0 8px 0 rgba(0, 0, 0, 0.3)',
+      card: '0 1px 6px 0 rgba(0, 0, 0, 0.3)'
+    }
+  },
+}
 const beforeAction = (request, context) => {
   if (context.currentAdmin.role !== 'Developer') {
     const { query = {} } = request
@@ -25,14 +69,10 @@ const beforeAction = (request, context) => {
     return request
   }
 }
-const Component = {
-  Dashboard: AdminJS.bundle('./components/my-dashboard-component'),
-  TopBar: AdminJS.bundle('./components/navbar', 'TopBar')
-};
 AdminJS.registerAdapter(AdminJSMongoose)
 const contentNavigation = {
   name: 'Logs',
-  icon: 'Dashboard'
+  icon: 'Activity'
 }
 const canModifyUsers = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
 const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.role === 'Developer'
@@ -40,11 +80,13 @@ const canEditReports = ({ currentAdmin }: any) => currentAdmin && currentAdmin.r
 
 
 const adminBroOptions = new AdminJS({
+  //resources is the sidebar options for the DB CRUD GUI
   resources: [
     {
       resource: Users,
       options: {
         navigation: contentNavigation,
+        listProperties: ['name', 'photo', 'email',],
         properties: {
           email: { isVisible: { list: true, filter: true, show: true, edit: true }, type: 'email' },
           encryptedPassword: { isVisible: false, type: 'password' },
@@ -54,6 +96,7 @@ const adminBroOptions = new AdminJS({
               list: false, edit: true, filter: false, show: false
             }
           },
+
           updatedAt: { isVisible: { list: true, filter: true, show: true, edit: false } },
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: false } }
         },
@@ -89,7 +132,24 @@ const adminBroOptions = new AdminJS({
           },
           delete: { isAccessible: canModifyUsers }
         }
-      }
+      },
+      features: [uploadFeature({
+        componentLoader,
+        provider: new UploadProvider({
+          bucket: 'dashboard-d7e5d.appspot.com'
+        }),
+        validation: { mimeTypes: ['image/png', 'image/jpeg', 'image/jpg'] },
+
+        properties: {
+          filename: 'photoname',
+          file: 'photo',
+          filePath: 'filePath',
+          key: 'avatar',
+          mimeType: 'mime'
+
+        },
+        uploadPath: (record, filename) => `${record.params.name}/${record.params.role}.png`,
+      })]
     },
     {
       resource: Exploiter,
@@ -100,7 +160,7 @@ const adminBroOptions = new AdminJS({
           exploited: { isVisible: { list: true, filter: true, show: true, edit: true } },
           createdAt: { isVisible: { list: true, filter: true, show: true, edit: true } }
         },
-       actions: {
+        actions: {
           list: {
             before: beforeAction
           },
@@ -163,10 +223,12 @@ const adminBroOptions = new AdminJS({
       }
     }
   ],
-
+  componentLoader,
+  availableThemes: [light, slateTheme],
   locale: {
     language: 'en',
     translations: {
+<<<<<<< HEAD
       properties: {
         password: 'Pass'
       },
@@ -186,17 +248,45 @@ const adminBroOptions = new AdminJS({
         Announce: 'Announcements',
         Email: 'Email',
         Exploiter: 'Users'
+=======
+      en: {
+        components: {
+          Login: {
+            welcomeHeader: "Aspect",
+            welcomeMessage: "Providing Innovative Security",
+            email: "Email",
+            password: "Password"
+            ,
+          }
+        }
+        ,
+        resources: {
+          Exploiter: {
+            properties: {
+              createdAt: 'Detected'
+            }
+          }
+        },
+        //For Translations, Text Edits and so on
+        labels: {
+          Users: 'Customers',
+          Announce: 'Announcements',
+          Email: 'Email',
+          Exploiter: 'Users'
+        }
+>>>>>>> a6f72f9771d6d5254a3aed43e3617aad1c4b8249
       }
     }
   },
+  //Custom component handler
   dashboard: {
     handler: async (request, response, context) => {
       let res;
       res = await Reports.find().sort({ createdAt: -1 }).limit(3)
       let announce = await Announce.find().sort({ createdAt: -1 }).limit(3)
-      let status = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
-      let subscription_type = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
-      let user = await Users.findOne({ email: context.currentAdmin?.email }, function (err, obj) { return obj })
+      let status = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
+      let subscription_type = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
+      let user = await Users.findOne({ email: context.currentAdmin?.email }).then(((docs) => { return docs}))
       return {
         stat: status,
         logs: res,
@@ -209,7 +299,7 @@ const adminBroOptions = new AdminJS({
   },
   pages: {
     'Dashboard': {
-      component: AdminJS.bundle('./components/my-dashboard-component'),
+      component: Component.Dashboard,
       icon: 'Terminal'
     },
 
@@ -221,12 +311,12 @@ const adminBroOptions = new AdminJS({
     theme: {
       colors: {
         primary100: '#6844CE',
-        hoverBg: '#cec2ef'
+        hoverBg: '#cec2ef',
       }
     },
     withMadeWithLove: false,
-    logo: "https://media.discordapp.net/attachments/1041025455144308816/1089434600872361984/Logo_mark_variant_4.png?width=114&height=115",
-    favicon: "https://cdn.discordapp.com/attachments/926498420011708427/1089225269887389726/Logo_mark_variant_4.ico"
+    logo: '/asset/icon (Custom).png',
+    favicon: "/asset/Logo_mark_variant_4.ico"
 
   },
   assets: {
